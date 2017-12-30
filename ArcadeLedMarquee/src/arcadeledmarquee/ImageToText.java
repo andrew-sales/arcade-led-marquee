@@ -9,16 +9,6 @@ package arcadeledmarquee;
  *
  * @author Andy
  */
-public class ArcadeLedMarquee {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        
-        
-        
-    }
+public class ImageToText {
     
 }
