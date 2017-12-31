@@ -7,22 +7,25 @@ package arcadeledmarquee;
 
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import javax.swing.UIManager;
 
 /**
  *
  * @author Andy
  */
-public class GUI extends javax.swing.JFrame {
+public class View extends javax.swing.JFrame {
 
     /**
      * Creates new form GUI
      */
-    public GUI() {
+    public View() {
+        
+        UIManager.getSystemLookAndFeelClassName();
+        
         initComponents();
         setIcon();
+        
+        
         
     }
 
@@ -39,13 +42,13 @@ public class GUI extends javax.swing.JFrame {
         fileForConversion = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
-        ConvertButton = new javax.swing.JButton();
+        convertButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        SelectFileForConversionButton = new javax.swing.JButton();
+        selectFileForConversionButton = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         testField = new javax.swing.JTextField();
 
@@ -58,10 +61,10 @@ public class GUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Arcade LED Marquee");
 
-        ConvertButton.setText("Convert");
-        ConvertButton.addActionListener(new java.awt.event.ActionListener() {
+        convertButton.setText("Convert");
+        convertButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConvertButtonActionPerformed(evt);
+                convertButtonActionPerformed(evt);
             }
         });
 
@@ -73,10 +76,10 @@ public class GUI extends javax.swing.JFrame {
 
         jButton2.setText("Send");
 
-        SelectFileForConversionButton.setText("Select File");
-        SelectFileForConversionButton.addActionListener(new java.awt.event.ActionListener() {
+        selectFileForConversionButton.setText("Select File");
+        selectFileForConversionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SelectFileForConversionButtonActionPerformed(evt);
+                selectFileForConversionButtonActionPerformed(evt);
             }
         });
 
@@ -96,9 +99,9 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(fileForConversion, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(200, 200, 200)
-                        .addComponent(SelectFileForConversionButton)
+                        .addComponent(selectFileForConversionButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ConvertButton))
+                        .addComponent(convertButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -133,8 +136,8 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(fileForConversion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ConvertButton)
-                    .addComponent(SelectFileForConversionButton))
+                    .addComponent(convertButton)
+                    .addComponent(selectFileForConversionButton))
                 .addGap(21, 21, 21)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
@@ -156,36 +159,19 @@ public class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ConvertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConvertButtonActionPerformed
+    private void convertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_convertButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ConvertButtonActionPerformed
+    }//GEN-LAST:event_convertButtonActionPerformed
 
-    private void SelectFileForConversionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectFileForConversionButtonActionPerformed
+    private void selectFileForConversionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectFileForConversionButtonActionPerformed
 
-fileChooser.setFileSelectionMode(fileChooser.FILES_AND_DIRECTORIES);
-int returnVal = fileChooser.showOpenDialog(this);
-if(returnVal == fileChooser.APPROVE_OPTION) {
-   fileForConversion.setText(fileChooser.getSelectedFile().getAbsolutePath());
+    fileChooser.setFileSelectionMode(fileChooser.FILES_AND_DIRECTORIES);
+    int returnVal = fileChooser.showOpenDialog(this);
     
-//    System.out.println("You chose to open this directory: " +
-//        chooser.getSelectedFile().getAbsolutePath());
-//}
-//    if (returnVal == fileChooser.DIRECTORIES_ONLY)
-//    
-//    int returnVal = fileChooser.showOpenDialog(this);{
-//        File file = fileChooser.getCurrentDirectory();
-////        try {
-////          // What to do with the file, e.g. display it in a TextArea
-////          fileForConversion.read( new FileReader( file.getAbsolutePath() ), null );
-////        } catch (IOException ex) {
-////          System.out.println("problem accessing file"+file.getAbsolutePath());
-////        }
-//    } else {
-//        System.out.println("File access cancelled by user.");
-//            fileForConversion.setText(fileChooser.getSelectedFile().getAbsolutePath());
+    if(returnVal == fileChooser.APPROVE_OPTION) {
+        fileForConversion.setText(fileChooser.getSelectedFile().getAbsolutePath());  
     }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SelectFileForConversionButtonActionPerformed
+    }//GEN-LAST:event_selectFileForConversionButtonActionPerformed
 
     private void fileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileChooserActionPerformed
         // TODO add your handling code here:
@@ -208,14 +194,15 @@ if(returnVal == fileChooser.APPROVE_OPTION) {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
         
         
@@ -223,14 +210,13 @@ if(returnVal == fileChooser.APPROVE_OPTION) {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI().setVisible(true);
+                new View().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ConvertButton;
-    private javax.swing.JButton SelectFileForConversionButton;
+    private javax.swing.JButton convertButton;
     private javax.swing.JFileChooser fileChooser;
     private javax.swing.JTextField fileForConversion;
     private javax.swing.JButton jButton2;
@@ -241,6 +227,7 @@ if(returnVal == fileChooser.APPROVE_OPTION) {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton selectFileForConversionButton;
     private javax.swing.JTextField testField;
     // End of variables declaration//GEN-END:variables
 
@@ -248,8 +235,14 @@ if(returnVal == fileChooser.APPROVE_OPTION) {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("ArcadeLogo.png")));
     }
     
+    //listeners
+    
     public void selectFileForConversionActionListener(ActionListener listenerSelectFileForConversionButton){  
-        SelectFileForConversionButton.addActionListener(listenerSelectFileForConversionButton);    
+        selectFileForConversionButton.addActionListener(listenerSelectFileForConversionButton);    
+    }
+    
+    public void ConvertButton(ActionListener listenerConvertButton){  
+        convertButton.addActionListener(listenerConvertButton);    
     }
  
     //setters
@@ -258,7 +251,11 @@ if(returnVal == fileChooser.APPROVE_OPTION) {
         testField.setText(textValue);
     }
     
+    //getters
     
+    public String getTestField () {
+        return testField.getText();
+    }
     
     
 }

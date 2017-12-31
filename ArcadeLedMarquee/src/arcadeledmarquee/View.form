@@ -43,9 +43,9 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
-                      <Component id="SelectFileForConversionButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="selectFileForConversionButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="ConvertButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="convertButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
@@ -91,8 +91,8 @@
               <Component id="fileForConversion" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="ConvertButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="SelectFileForConversionButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="convertButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="selectFileForConversionButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
@@ -123,12 +123,12 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField3">
     </Component>
-    <Component class="javax.swing.JButton" name="ConvertButton">
+    <Component class="javax.swing.JButton" name="convertButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Convert"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConvertButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="convertButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -153,12 +153,12 @@
         <Property name="text" type="java.lang.String" value="Send"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="SelectFileForConversionButton">
+    <Component class="javax.swing.JButton" name="selectFileForConversionButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Select File"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SelectFileForConversionButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectFileForConversionButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton4">
