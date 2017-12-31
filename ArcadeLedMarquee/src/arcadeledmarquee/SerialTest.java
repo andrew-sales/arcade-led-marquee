@@ -131,6 +131,7 @@ public class SerialTest implements SerialPortEventListener {
       
 //            output.write(number);
             output.write(character.getBytes());
+          //  output.write(b);
         }
         
         

@@ -123,16 +123,16 @@ if (Serial.available() > 0) {
    if(byteRead == '1') {
       
      matrix.fillRect(0, 0, matrix.width(), matrix.height(), matrix.Color333(0, 7, 0));
-  delay(500);
-  matrix.fillScreen(matrix.Color333(0, 0, 0));
+ // delay(500);
+ // matrix.fillScreen(matrix.Color333(0, 0, 0));
    }
 if(byteRead == '2'){
 
   matrix.drawLine(0, 0, matrix.width()-1, matrix.height()-1, matrix.Color333(7, 0, 0));
   matrix.drawLine(matrix.width()-1, 0, 0, matrix.height()-1, matrix.Color333(7, 0, 0));
-  delay(500);
+//  delay(500);
   // fill the screen with 'black'
-  matrix.fillScreen(matrix.Color333(0, 0, 0));
+//  matrix.fillScreen(matrix.Color333(0, 0, 0));
   
 }
    
