@@ -69,8 +69,7 @@ public class ImageToText {
             }
         }
         
-        JOptionPane.showMessageDialog(null,
-    "Eggs are not supposed to be green.");
+        JOptionPane.showMessageDialog(null, "Conversion Complete");
         
     }
     
