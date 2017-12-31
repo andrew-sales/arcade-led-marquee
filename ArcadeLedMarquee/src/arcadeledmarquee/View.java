@@ -7,6 +7,7 @@ package arcadeledmarquee;
 
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
+import java.io.File;
 import javax.swing.UIManager;
 
 /**
@@ -18,6 +19,8 @@ public class View extends javax.swing.JFrame {
     /**
      * Creates new form GUI
      */
+    private File selectedConvertFile;
+    
     public View() {
         
         UIManager.getSystemLookAndFeelClassName();
@@ -169,7 +172,12 @@ public class View extends javax.swing.JFrame {
     int returnVal = fileChooser.showOpenDialog(this);
     
     if(returnVal == fileChooser.APPROVE_OPTION) {
-        fileForConversion.setText(fileChooser.getSelectedFile().getAbsolutePath());  
+        
+        selectedConvertFile = fileChooser.getSelectedFile();
+        String path = selectedConvertFile.getAbsolutePath();
+        setFileForConversion(path);
+        //fileForConversion.setText(fileChooser.getSelectedFile().getAbsolutePath());
+        
     }
     }//GEN-LAST:event_selectFileForConversionButtonActionPerformed
 
@@ -247,14 +255,14 @@ public class View extends javax.swing.JFrame {
  
     //setters
     
-    public void setTestField (String textValue) {
-        testField.setText(textValue);
+    public void setFileForConversion (String textValue) {
+        fileForConversion.setText(textValue);
     }
     
     //getters
     
-    public String getTestField () {
-        return testField.getText();
+    public String getFileForConversion () {
+        return fileForConversion.getText();
     }
     
     

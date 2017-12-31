@@ -37,7 +37,7 @@ class ListenerSelectFileForConversionButton implements ActionListener{
             
             
             try {
-                ImageToText newImageToText = new ImageToText(newGUI.getTestField());
+                ImageToText newImageToText = new ImageToText(newGUI.getFileForConversion());
             } catch (IOException ex) {
                 Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -12,6 +12,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -34,7 +35,7 @@ public class ImageToText {
          * take image of 30 x 30 dimensions'
          * as it takes less time to execute...'
          */
-        BufferedImage image = readImage(inputFile);               //Input Image file
+        BufferedImage image = readImage("C:\\version1.png");               //Input Image file
         printAllRGBDetails(image);
         
         
@@ -67,6 +68,10 @@ public class ImageToText {
                 pix_num++;
             }
         }
+        
+        JOptionPane.showMessageDialog(null,
+    "Eggs are not supposed to be green.");
+        
     }
     
     
