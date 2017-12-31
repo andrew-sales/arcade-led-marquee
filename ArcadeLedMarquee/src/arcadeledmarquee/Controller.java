@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class Controller {
     
 private final View newGUI;
-private final SerialTest main;
+private final SerialConnection main;
 
 
 
@@ -28,7 +28,7 @@ public Controller () {
     newGUI = new View();
     newGUI.setVisible(true);
     
-    main = new SerialTest();
+    main = new SerialConnection();
 
 //this.newGUI.selectFileForConversionActionListener (new ListenerSelectFileForConversionButton());
 this.newGUI.ConvertButton (new ListenerSelectFileForConversionButton());

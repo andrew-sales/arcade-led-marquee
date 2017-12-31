@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.Enumeration;
 
 
-public class SerialTest implements SerialPortEventListener {
+public class SerialConnection implements SerialPortEventListener {
 	SerialPort serialPort;
         /** The port we're normally going to use. */
 	private static final String PORT_NAMES[] = { 
