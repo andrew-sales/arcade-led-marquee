@@ -35,7 +35,7 @@ public class ImageToText {
          * take image of 30 x 30 dimensions'
          * as it takes less time to execute...'
          */
-        BufferedImage image = readImage("C:\\version3.png");               //Input Image file
+        BufferedImage image = readImage("C:\\version2.png");               //Input Image file
         printAllRGBDetails(image);
         
         
@@ -92,6 +92,15 @@ public class ImageToText {
         int red = (pixel >> 16) & 0x000000FF;
         int green = (pixel >>8 ) & 0x000000FF;
         int blue = (pixel) & 0x000000FF;
+        if (red==255) {
+            red = 1;
+        }
+        if (green==255) {
+            green = 1;
+        }
+        if (blue==255) {
+            blue = 1;
+        }
         RGBvalue = red + "," + green + "," + blue;
         return RGBvalue;
     }

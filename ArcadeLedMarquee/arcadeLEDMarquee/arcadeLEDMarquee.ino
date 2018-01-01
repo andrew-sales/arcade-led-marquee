@@ -18,7 +18,7 @@
 
 RGBmatrixPanel matrix(A, B, C, D, CLK, LAT, OE, false, 64);
 
-#define SCREEN_WIDTH 64
+#define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 32
 #define BUFLENGTH 2048
 
@@ -32,6 +32,7 @@ String yCoordByteRead;
 String redByteRead;
 String greenByteRead;
 String blueByteRead;
+String Test;
 
 int ind1;
 int ind2;
@@ -137,7 +138,6 @@ if (Serial.available() > 0) {
    char C = Serial.read();
    if (C == '*') {
 
- //    matrix.fillRect(0, 0, matrix.width(), matrix.height(), matrix.Color333(0, 7, 0));
 
       ind1 = readString.indexOf(',');  //finds location of first ,
       xCoordByteRead = readString.substring(0, ind1);   //captures first data String   
@@ -148,13 +148,36 @@ if (Serial.available() > 0) {
       ind4 = readString.indexOf(',', ind3+1 );
       greenByteRead = readString.substring(ind3+1, ind4+1); //captures remain part of data after last
       ind5 = readString.indexOf(',', ind4+1 );
-      blueByteRead = readString.substring(ind4 +1, ind5+1); //captures remain part of data after last
+      blueByteRead = readString.substring(ind4+1); //captures remain part of data after last
 
   
 
 matrix.drawPixel(xCoordByteRead.toInt(), yCoordByteRead.toInt(), matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt())); 
-// matrix.fillRect(0, 0, matrix.width(), matrix.height(), matrix.Color333(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt()));
+//matrix.fillRect(xCoordByteRead.toInt(), yCoordByteRead.toInt(),20, 20, matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt()));
 
+//  // draw a blue circle
+
+//matrix.drawCircle(10, 10, 10, matrix.Color333(0, 0, 1));
+////delay(500);
+//matrix.fillScreen(matrix.Color333(0, 0, 1));
+//delay(5000);
+//matrix.fillScreen(matrix.Color333(0, 0, 0));
+//delay(5000);
+//matrix.fillScreen(matrix.Color333(0, 0, 7));
+//
+//delay(5000);
+//matrix.fillScreen(matrix.Color333(0, 0, 0));
+//delay(5000);
+//matrix.fillScreen(matrix.Color444(0, 0, 7));
+// 
+// matrix.setTextColor(matrix.Color333(4,0,7)); 
+//  matrix.print("r" + redByteRead);
+//  matrix.print("g" + greenByteRead);
+// matrix.print("b" + blueByteRead);
+// 
+// delay(5000);
+//
+// matrix.fillScreen(matrix.Color333(0, 0, 0));
 
    readString=""; //clears variable for new input
        xCoordByteRead="";
@@ -162,6 +185,9 @@ matrix.drawPixel(xCoordByteRead.toInt(), yCoordByteRead.toInt(), matrix.Color444
  redByteRead="";
  greenByteRead="";
  blueByteRead="";
+
+matrix.setTextColor(matrix.Color333(4,0,7)); 
+ matrix.print(blueByteRead);
       
 }
 else {     
