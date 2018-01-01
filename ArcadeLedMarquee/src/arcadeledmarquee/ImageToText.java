@@ -35,7 +35,7 @@ public class ImageToText {
          * take image of 30 x 30 dimensions'
          * as it takes less time to execute...'
          */
-        BufferedImage image = readImage("C:\\version1.png");               //Input Image file
+        BufferedImage image = readImage("C:\\version3.png");               //Input Image file
         printAllRGBDetails(image);
         
         
@@ -61,7 +61,7 @@ public class ImageToText {
                 String idata=(getRGBPixelData(pixel));
 //                System.out.print("Pixel ("+i+","+j+"): ");
                 System.out.print(i + "," + j + ",");
-                System.out.print(idata);
+                System.out.print(idata + "*");
                 if(pix_num<total_pix)       //To delete the line that generates at end of file
                 {
                     System.out.println("");

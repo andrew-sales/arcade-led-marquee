@@ -82,7 +82,7 @@ public class View extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jTextField3 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        sendFileButton = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
 
@@ -353,8 +353,7 @@ public class View extends javax.swing.JFrame {
 
         jButton4.setText("Select File");
 
-        jButton2.setText("Send");
-        jButton2.setEnabled(false);
+        sendFileButton.setText("Send");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -369,7 +368,7 @@ public class View extends javax.swing.JFrame {
                         .addComponent(jButton4))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(sendFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -380,7 +379,7 @@ public class View extends javax.swing.JFrame {
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(sendFileButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -525,7 +524,6 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTextField fileForConversion;
     private javax.swing.JTextField greenLedField;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -557,6 +555,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTextField redLedField;
     private javax.swing.JButton selectFileForConversionButton;
     private javax.swing.JButton sendData;
+    private javax.swing.JButton sendFileButton;
     private javax.swing.JButton sendRGBButton;
     private javax.swing.JTextField testConnectionField;
     private javax.swing.JTextField xCoordField;
@@ -591,6 +590,10 @@ public class View extends javax.swing.JFrame {
     
     public void SendRGBButtonListener(ActionListener listenerSendRGBButton){  
         sendRGBButton.addActionListener(listenerSendRGBButton);    
+    }
+    
+     public void SendFileButtonListener(ActionListener listenerSendFileButton){  
+        sendFileButton.addActionListener(listenerSendFileButton);    
     }
  
  

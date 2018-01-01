@@ -7,6 +7,10 @@ package arcadeledmarquee;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,6 +43,8 @@ this.newGUI.OpenPortButtonListener(new ListenerOpenPortButton());
 this.newGUI.ClosePortButtonListener(new ListenerClosePortButton());
 this.newGUI.SendDataButtonListener(new ListenerSendDataButton());
 this.newGUI.SendRGBButtonListener(new listenerSendRGBButton());
+this.newGUI.SendFileButtonListener(new listenerSendFileButton());
+
 }
 
 class ListenerSelectFileForConversionButton implements ActionListener{
@@ -150,6 +156,38 @@ class listenerSendRGBButton implements ActionListener{
         } 
         
         }
+
+
+class listenerSendFileButton implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {   
+            
+         try {
+             File file = new File("C:\\Users\\Andy\\Documents\\pixels.txt");
+             FileReader filereader = new FileReader(file);
+             BufferedReader bufferedReader = new BufferedReader(filereader);
+             StringBuffer stringBuffer = new StringBuffer();
+             String line;
+             while ((line = bufferedReader.readLine()) != null) {
+                 main.sendRGBToArduino(line.getBytes());
+                 System.err.println(line);
+                 
+             }
+             filereader.close();
+             
+         }  catch (FileNotFoundException ex) {
+                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+             
+        } 
+        
+        }
+
+
+
+}
 }
 
 
