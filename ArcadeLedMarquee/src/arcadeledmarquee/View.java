@@ -105,7 +105,6 @@ public class View extends javax.swing.JFrame {
         });
 
         convertButton.setText("Convert");
-        convertButton.setEnabled(false);
         convertButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 convertButtonActionPerformed(evt);

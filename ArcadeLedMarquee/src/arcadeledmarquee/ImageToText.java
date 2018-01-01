@@ -48,18 +48,19 @@ public class ImageToText {
         int pix_num = 1;
         int total_pix=width*height;
         
-        System.out.println("--------------------------------------------");
-        System.out.println("Image Scrambler");   
-        System.out.println("Image Dimension: Height-" + height + ", Width-" + width);
-        System.out.println("Total Pixels: " + (height * width));
-        System.out.println("--------------------------------------------");
+//        System.out.println("--------------------------------------------");
+//        System.out.println("Image Scrambler");   
+//        System.out.println("Image Dimension: Height-" + height + ", Width-" + width);
+//        System.out.println("Total Pixels: " + (height * width));
+//        System.out.println("--------------------------------------------");
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
                 int pixel = image.getRGB(i, j);
                 String idata=(getRGBPixelData(pixel));
-                System.out.print("Pixel ("+i+","+j+"): ");
+//                System.out.print("Pixel ("+i+","+j+"): ");
+                System.out.print(i + "," + j + ",");
                 System.out.print(idata);
                 if(pix_num<total_pix)       //To delete the line that generates at end of file
                 {
@@ -91,7 +92,7 @@ public class ImageToText {
         int red = (pixel >> 16) & 0x000000FF;
         int green = (pixel >>8 ) & 0x000000FF;
         int blue = (pixel) & 0x000000FF;
-        RGBvalue = red + " " + green + " " + blue;
+        RGBvalue = red + "," + green + "," + blue;
         return RGBvalue;
     }
     
