@@ -5,6 +5,9 @@
  */
 package arcadeledmarquee;
 
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+
 /**
  *
  * @author Andy
@@ -14,9 +17,9 @@ public class RGBToLED {
 public int[] RGB;
 public int[] LEDRGB;
 
-public RGBToLED (int[] startRGB){
+public RGBToLED (){
     
-    RGB = startRGB;
+    //RGB = startRGB;
     
 }
 
@@ -33,5 +36,25 @@ for (int i = 0; i < 3; i++) {
     return LEDRGB;
     
 }
+
+public byte [] createByteArray (int [] inputArray) 
+        
+    {
+        int[] data = inputArray;
+
+        ByteBuffer byteBuffer = ByteBuffer.allocate(data.length * 4);        
+        IntBuffer intBuffer = byteBuffer.asIntBuffer();
+        intBuffer.put(data);
+
+        byte[] array = byteBuffer.array();
+
+        for (int i=0; i < array.length; i++)
+        {
+            System.out.println(i + ": " + array[i]);
+        }
+        
+        return array;
+    }
+
       
 }

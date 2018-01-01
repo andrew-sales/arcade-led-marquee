@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -19,14 +20,16 @@ public class Controller {
     
 private final View newGUI;
 private final SerialConnection main;
+private final RGBToLED newRGBToLED;
 
 
 
 
-public Controller () { 
+public Controller () throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException { 
 
     newGUI = new View();
-    newGUI.setVisible(true);
+    newGUI.setVisible(true);  
+    newRGBToLED = new RGBToLED();
     
     main = new SerialConnection();
 
@@ -35,6 +38,7 @@ this.newGUI.ConvertButton (new ListenerSelectFileForConversionButton());
 this.newGUI.OpenPortButtonListener(new ListenerOpenPortButton());
 this.newGUI.ClosePortButtonListener(new ListenerClosePortButton());
 this.newGUI.SendDataButtonListener(new ListenerSendDataButton());
+this.newGUI.SendRGBButtonListener(new listenerSendRGBButton());
 }
 
 class ListenerSelectFileForConversionButton implements ActionListener{
@@ -62,7 +66,7 @@ class ListenerOpenPortButton implements ActionListener{
         public void actionPerformed(ActionEvent e) {   
             
                 
-		main.initialize();
+		newGUI.setPortStatusLabel(main.initialize());
 		Thread t=new Thread() {
 			public void run() {
 				//the following line will keep this app alive for 1000 seconds,
@@ -72,15 +76,10 @@ class ListenerOpenPortButton implements ActionListener{
 		};
 		t.start();
 		System.out.println("Started");
-                
-                
-                
-            
-                
+                //newGUI.setPortStatusLabel("Searching for Port");
+                          
         } 
-        
-       
-        
+
         }
 
 
@@ -89,7 +88,8 @@ class ListenerClosePortButton implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {   
             
-           main.close();
+           String portStatus = main.close();
+           newGUI.setPortStatusLabel(portStatus);
            
         }
 }
@@ -109,5 +109,48 @@ class ListenerSendDataButton implements ActionListener{
         } 
         
         }
+
+class listenerSendRGBButton implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {   
+            
+//        byte[] newByteArray = new byte[5];
+        
+        
+        
+        
+        
+        String transferString = new String();
+        
+        transferString = (newGUI.getXCoordString() + "," + newGUI.getYCoordString() + "," +
+                newGUI.getRedLedString() + "," + newGUI.getGreenLedString()  + "," +
+                newGUI.getBlueLedString() + "*");
+            System.out.println(transferString);
+        
+//            transferString = (newGUI.getXCoordString() + newGUI.getYCoordString() +
+//                newGUI.getRedLedString()+ newGUI.getGreenLedString() +
+//                newGUI.getBlueLedString());
+//            System.out.println(transferString);
+            
+//        newByteArray[0] = (newGUI.getXCoordString().get;
+//        
+//        newStringArray[1] = newGUI.getYCoordString();
+//        newStringArray[2] = newGUI.getRedLedString();   
+//        newStringArray[3] = newGUI.getGreenLedString();    
+//        newStringArray[4] = newGUI.getBlueLedString();    
+            
+//        newRGBToLED.createByteArray(newIntArray);
+            try {
+                main.sendRGBToArduino(transferString.getBytes());
+            } catch (IOException ex) {
+                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        } 
+        
+        }
 }
+
+
 

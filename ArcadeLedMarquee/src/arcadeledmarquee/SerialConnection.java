@@ -38,7 +38,7 @@ public class SerialConnection implements SerialPortEventListener {
 	/** Default bits per second for COM port. */
 	private static final int DATA_RATE = 9600;
 
-	public void initialize() {
+	public String initialize() {
                 // the next line is for Raspberry Pi and 
                 // gets us into the while loop and was suggested here was suggested http://www.raspberrypi.org/phpBB3/viewtopic.php?f=81&t=32186
                 //System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
@@ -58,7 +58,7 @@ public class SerialConnection implements SerialPortEventListener {
 		}
 		if (portId == null) {
 			System.out.println("Could not find COM port.");
-			return;
+			return ("Port not Found");
 		}
 
 		try {
@@ -83,18 +83,20 @@ public class SerialConnection implements SerialPortEventListener {
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
+                return ("Port Open");
 	}
 
 	/**
 	 * This should be called when you stop using the port.
 	 * This will prevent port locking on platforms like Linux.
 	 */
-	public synchronized void close() {
+	public synchronized String close() {
 		if (serialPort != null) {
 			serialPort.removeEventListener();
 			serialPort.close();
 		}
                 System.out.println("Port Closed");
+                return "Port Closed";
 	}
 
 	/**
@@ -128,11 +130,14 @@ public class SerialConnection implements SerialPortEventListener {
         
         public void sendCharToArduino (String character) throws IOException
         {
-      
 //            output.write(number);
             output.write(character.getBytes());
           //  output.write(b);
         }
         
+        public void sendRGBToArduino (byte[] RGBArray) throws IOException {
+            
+            output.write(RGBArray);          
+        }
         
 }

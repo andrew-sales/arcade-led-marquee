@@ -6,6 +6,7 @@
 #include <Adafruit_GFX.h>   // Core graphics library
 #include <RGBmatrixPanel.h> // Hardware-specific library
 #include <SoftwareSerial.h>
+#include <Arduino.h>
 
 #define OE   9
 #define LAT 10
@@ -23,6 +24,20 @@ RGBmatrixPanel matrix(A, B, C, D, CLK, LAT, OE, false, 64);
 
 char buf[BUFLENGTH]; //stores the buffer of serial port messages on which LEDs should be on and off
   int bufCount; //used to store how many bytes within this buffer are left to read out
+
+  String readString;
+
+String xCoordByteRead;
+String yCoordByteRead;
+String redByteRead;
+String greenByteRead;
+String blueByteRead;
+
+int ind1;
+int ind2;
+int ind3;
+int ind4;
+int ind5;
 
 void setup() {
 
@@ -116,29 +131,101 @@ void setup() {
 
 void loop() {
 
-int byteRead = 0;
+
+
 if (Serial.available() > 0) {
-   byteRead = Serial.read();
-   
-   if(byteRead == '1') {
-      
-     matrix.fillRect(0, 0, matrix.width(), matrix.height(), matrix.Color333(0, 7, 0));
- // delay(500);
- // matrix.fillScreen(matrix.Color333(0, 0, 0));
-   }
-if(byteRead == '2'){
+   char C = Serial.read();
+   if (C == '*') {
 
-  matrix.drawLine(0, 0, matrix.width()-1, matrix.height()-1, matrix.Color333(7, 0, 0));
-  matrix.drawLine(matrix.width()-1, 0, 0, matrix.height()-1, matrix.Color333(7, 0, 0));
-//  delay(500);
-  // fill the screen with 'black'
-//  matrix.fillScreen(matrix.Color333(0, 0, 0));
+ //    matrix.fillRect(0, 0, matrix.width(), matrix.height(), matrix.Color333(0, 7, 0));
+
+      ind1 = readString.indexOf(',');  //finds location of first ,
+      xCoordByteRead = readString.substring(0, ind1);   //captures first data String   
+      ind2 = readString.indexOf(',', ind1+1 );   //finds location of second ,
+      yCoordByteRead = readString.substring(ind1+1, ind2+1);   //captures second data String
+      ind3 = readString.indexOf(',', ind2+1 );
+      redByteRead = readString.substring(ind2+1, ind3+1);
+      ind4 = readString.indexOf(',', ind3+1 );
+      greenByteRead = readString.substring(ind3+1, ind4+1); //captures remain part of data after last
+      ind5 = readString.indexOf(',', ind4+1 );
+      blueByteRead = readString.substring(ind4 +1, ind5+1); //captures remain part of data after last
+
   
-}
-   
-    }
-}
 
+matrix.drawPixel(xCoordByteRead.toInt(), yCoordByteRead.toInt(), matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt())); 
+// matrix.fillRect(0, 0, matrix.width(), matrix.height(), matrix.Color333(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt()));
+
+
+   readString=""; //clears variable for new input
+       xCoordByteRead="";
+ yCoordByteRead="";
+ redByteRead="";
+ greenByteRead="";
+ blueByteRead="";
+      
+}
+else {     
+      readString += C; //makes the string readString
+
+//matrix.setTextColor(matrix.Color333(4,0,7)); 
+//matrix.print(readString);
+      
+//       if (readString == "1,1,1,1,1") {
+//
+//  matrix.fillRect(0, 0, matrix.width(), matrix.height(), matrix.Color333(0, 0, 7));
+//}
+//
+//else {
+//
+//  matrix.fillRect(0, 0, matrix.width(), matrix.height(), matrix.Color333(0, 7, 0));
+//}
+    
+}  
+
+//   
+//   yCoordByteRead = Serial.read();
+//   redByteRead = Serial.read();
+//   greenByteRead = Serial.read();
+//   blueByteRead = Serial.read();
+
+
+//   
+//matrix.drawPixel(xCoordByteRead.toInt(), yCoordByteRead.toInt(), matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt())); 
+//  
+//   
+//   if(xCoordByteRead == '1') {
+//      
+//    matrix.fillRect(0, 0, matrix.width(), matrix.height(), matrix.Color333(0, 7, 0));
+// delay(500);
+// matrix.fillScreen(matrix.Color333(0, 0, 0));
+//   }
+//if(xCoordByteRead == '2'){
+//
+//  matrix.drawLine(0, 0, matrix.width()-1, matrix.height()-1, matrix.Color333(7, 0, 0));
+//  matrix.drawLine(matrix.width()-1, 0, 0, matrix.height()-1, matrix.Color333(7, 0, 0));
+// delay(500);
+//  // fill the screen with 'black'
+// matrix.fillScreen(matrix.Color333(0, 0, 0));
+//  
+//}
+   
+    
+
+//byte myArray[5];
+//
+//if (Serial.available() > 0) {
+//
+//myArray = Serial.read();
+
+//Serial.print(array[0]);
+//}
+
+
+
+
+    
+}
+}
 //void serialParse(void) {
 //    bufCount = -1;
 //    bufCount = Serial.readBytesUntil('\n', buf, BUFLENGTH);

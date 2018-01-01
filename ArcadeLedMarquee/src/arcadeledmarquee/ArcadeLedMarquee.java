@@ -5,6 +5,8 @@
  */
 package arcadeledmarquee;
 
+import javax.swing.UnsupportedLookAndFeelException;
+
 /**
  *
  * @author Andy
@@ -14,7 +16,7 @@ public class ArcadeLedMarquee {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
         // TODO code application logic here
         
         Controller newController = new Controller(); 
