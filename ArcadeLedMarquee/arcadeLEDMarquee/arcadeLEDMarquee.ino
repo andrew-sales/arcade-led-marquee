@@ -42,12 +42,14 @@ int ind5;
 
 void setup() {
 
- Serial.begin(9600);
+ Serial.begin(19200);
 
   matrix.begin();
   
   // fill the screen with 'black'
   matrix.fillScreen(matrix.Color333(0, 0, 0));
+
+ 
 
 //
 //

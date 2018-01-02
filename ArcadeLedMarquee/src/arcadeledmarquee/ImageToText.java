@@ -22,12 +22,14 @@ import javax.swing.JOptionPane;
 public class ImageToText {
     
     public String inputFile;
+    public String outputFolder;
     
-    public ImageToText (String imageToConvertFileLocation)throws FileNotFoundException, IOException {
+    public ImageToText (String imageToConvertFileLocation, String imageOutputFolder)throws FileNotFoundException, IOException {
           
         inputFile = imageToConvertFileLocation;
+        outputFolder = imageOutputFolder;
         
-        File output_file=new File("C:\\Users\\Andy\\Documents\\pixels.txt"); 
+        File output_file=new File(outputFolder + "\\pixels.txt"); 
         PrintStream out=new PrintStream(new FileOutputStream(output_file));
         System.setOut(out);
         /*

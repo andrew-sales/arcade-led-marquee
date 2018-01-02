@@ -55,7 +55,7 @@ class ListenerSelectFileForConversionButton implements ActionListener{
             
             
             try {
-                ImageToText newImageToText = new ImageToText(newGUI.getFileForConversion());
+                ImageToText newImageToText = new ImageToText(newGUI.getFileForConversion(), newGUI.getOutputFolder());
             } catch (IOException ex) {
                 Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -166,7 +166,8 @@ class listenerSendFileButton implements ActionListener{
         public void actionPerformed(ActionEvent e) {   
             
          try {
-             File file = new File("C:\\Users\\Andy\\Documents\\pixels.txt");
+             File file = new File(newGUI.getArduinoDataFile());
+             System.out.println(newGUI.getArduinoDataFile());
              FileReader filereader = new FileReader(file);
              BufferedReader bufferedReader = new BufferedReader(filereader);
              StringBuffer stringBuffer = new StringBuffer();
