@@ -42,7 +42,7 @@ int ind5;
 
 void setup() {
 
- Serial.begin(9600);
+ Serial.begin(19200);
 
   matrix.begin();
   
@@ -136,7 +136,15 @@ void loop() {
 
 if (Serial.available() > 0) {
    char C = Serial.read();
-   if (C == '*') {
+   
+   if(C == '#') {
+
+matrix.fillScreen(matrix.Color333(0, 0, 0));
+
+    
+   }
+   
+   else if (C == '*') {
 
 
       ind1 = readString.indexOf(',');  //finds location of first ,
@@ -171,23 +179,25 @@ matrix.drawPixel(xCoordByteRead.toInt(), yCoordByteRead.toInt(), matrix.Color444
 //matrix.fillScreen(matrix.Color444(0, 0, 7));
 // 
 // matrix.setTextColor(matrix.Color333(4,0,7)); 
+//  matrix.print("X" + xCoordByteRead);
+//  matrix.print("Y" + yCoordByteRead);
 //  matrix.print("r" + redByteRead);
 //  matrix.print("g" + greenByteRead);
 // matrix.print("b" + blueByteRead);
 // 
 // delay(5000);
-//
+////
 // matrix.fillScreen(matrix.Color333(0, 0, 0));
 
    readString=""; //clears variable for new input
-       xCoordByteRead="";
+ xCoordByteRead="";
  yCoordByteRead="";
  redByteRead="";
  greenByteRead="";
  blueByteRead="";
 
-matrix.setTextColor(matrix.Color333(4,0,7)); 
- matrix.print(blueByteRead);
+//matrix.setTextColor(matrix.Color333(4,0,7)); 
+// matrix.print(blueByteRead);
       
 }
 else {     

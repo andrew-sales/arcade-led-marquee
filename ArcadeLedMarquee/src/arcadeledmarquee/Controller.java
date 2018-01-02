@@ -107,7 +107,8 @@ class ListenerSendDataButton implements ActionListener{
         public void actionPerformed(ActionEvent e) {   
             
            try {
-                main.sendCharToArduino(newGUI.getTestConnectionString());
+               System.err.println(newGUI.getTestConnectionString()); 
+               main.sendRGBToArduino(newGUI.getTestConnectionString().getBytes());
             } catch (IOException ex) {
                 Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
