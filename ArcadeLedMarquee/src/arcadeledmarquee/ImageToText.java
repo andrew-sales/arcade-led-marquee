@@ -35,7 +35,8 @@ public class ImageToText {
          * take image of 30 x 30 dimensions'
          * as it takes less time to execute...'
          */
-        BufferedImage image = readImage("C:\\version2.png");               //Input Image file
+        BufferedImage image = readImage(imageToConvertFileLocation);
+        System.err.println(imageToConvertFileLocation);//Input Image file
         printAllRGBDetails(image);
         
         

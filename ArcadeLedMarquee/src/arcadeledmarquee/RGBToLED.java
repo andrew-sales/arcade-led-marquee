@@ -14,8 +14,8 @@ import java.nio.IntBuffer;
  */
 public class RGBToLED {
     
-public int[] RGB;
-public int[] LEDRGB;
+public int RGB;
+public int LEDRGB;
 
 public RGBToLED (){
     
@@ -23,13 +23,17 @@ public RGBToLED (){
     
 }
 
-public int[] convertRGBToLED (int[] RGBValue) {
+public int convertRGBToLED (int RGBValue) {
     
 RGB = RGBValue;
  
-for (int i = 0; i < 3; i++) {
-    
-    LEDRGB[i] = RGB[i] / 16;
+
+    if (RGB > 127) {
+        
+    LEDRGB = 1;
+    }
+    else {
+        LEDRGB = 0;
  
 }
 
