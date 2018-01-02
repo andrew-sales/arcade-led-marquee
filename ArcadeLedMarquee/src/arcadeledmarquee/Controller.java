@@ -44,6 +44,7 @@ this.newGUI.ClosePortButtonListener(new ListenerClosePortButton());
 this.newGUI.SendDataButtonListener(new ListenerSendDataButton());
 this.newGUI.SendRGBButtonListener(new listenerSendRGBButton());
 this.newGUI.SendFileButtonListener(new listenerSendFileButton());
+this.newGUI.ClearPanelButtonListener(new listenerClearPanelButton());
 
 }
 
@@ -185,10 +186,25 @@ class listenerSendFileButton implements ActionListener{
         } 
         
         }
-
-
-
 }
+
+        class listenerClearPanelButton implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {   
+            
+           String clear = "#"; 
+            try {
+                main.sendRGBToArduino(clear.getBytes());
+            } catch (IOException ex) {
+                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+        }
+}
+
+
+
 }
 
 

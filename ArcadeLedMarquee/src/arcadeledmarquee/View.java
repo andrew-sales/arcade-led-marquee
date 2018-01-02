@@ -82,7 +82,7 @@ public class View extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        clearPanelButton = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jTextField3 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
@@ -279,7 +279,7 @@ public class View extends javax.swing.JFrame {
 
         jLabel13.setText("or");
 
-        jButton1.setText("Clear Panel");
+        clearPanelButton.setText("Clear Panel");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -307,7 +307,7 @@ public class View extends javax.swing.JFrame {
                                     .addComponent(jLabel4)))
                             .addComponent(jLabel6)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(clearPanelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(79, 79, 79)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,7 +375,7 @@ public class View extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sendRGBButton)
-                    .addComponent(jButton1))
+                    .addComponent(clearPanelButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -607,12 +607,12 @@ public class View extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField blueLedField;
+    private javax.swing.JButton clearPanelButton;
     private javax.swing.JButton closePort;
     private javax.swing.JButton convertButton;
     private javax.swing.JFileChooser fileChooser;
     private javax.swing.JTextField fileForConversion;
     private javax.swing.JTextField greenLedField;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -695,6 +695,10 @@ public class View extends javax.swing.JFrame {
     
      public void SendFileButtonListener(ActionListener listenerSendFileButton){  
         sendFileButton.addActionListener(listenerSendFileButton);    
+    }
+     
+     public void ClearPanelButtonListener(ActionListener listenerClearPanelutton){  
+        clearPanelButton.addActionListener(listenerClearPanelutton);    
     }
  
  

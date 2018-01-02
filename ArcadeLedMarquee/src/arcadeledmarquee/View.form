@@ -384,7 +384,7 @@
                               </Group>
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jButton1" min="-2" pref="92" max="-2" attributes="0"/>
+                                  <Component id="clearPanelButton" min="-2" pref="92" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -475,7 +475,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="sendRGBButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="clearPanelButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -557,7 +557,7 @@
             <Property name="text" type="java.lang.String" value="or"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="clearPanelButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Clear Panel"/>
           </Properties>
