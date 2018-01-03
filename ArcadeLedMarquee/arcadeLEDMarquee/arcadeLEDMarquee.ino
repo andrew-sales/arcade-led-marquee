@@ -35,6 +35,8 @@ String redByteRead;
 String greenByteRead;
 String blueByteRead;
 
+String shapeType;
+
 
 int ind1;
 int ind2;
@@ -43,6 +45,7 @@ int ind4;
 int ind5;
 int ind6;
 int ind7;
+int ind8;
 
 void setup() {
 
@@ -73,8 +76,8 @@ char  c = Serial.read();
 
    if (c == '+') {  
 
-             matrix.setTextColor(matrix.Color333(7,0,4)); 
-  matrix.println(readString);
+      //       matrix.setTextColor(matrix.Color333(7,0,4)); 
+
 
                     ind1 = readString.indexOf(',');  //finds location of first ,
                     xCoordByteRead = readString.substring(0, ind1);   //captures first data String   
@@ -90,9 +93,25 @@ char  c = Serial.read();
                     ind6 = readString.indexOf(',', ind5+1 );
                     greenByteRead = readString.substring(ind5+1, ind6+1); //captures remain part of data after last
                     ind7 = readString.indexOf(',', ind6+1 );
-                    blueByteRead = readString.substring(ind6+1); //captures remain part of data after last
+                    blueByteRead = readString.substring(ind6+1, ind7+1); //captures remain part of data after last
+                    ind8 = readString.indexOf(',', ind7+1 );
+                    shapeType = readString.substring(ind7+1); //captures remain part of data after last
+
+                     matrix.println(shapeType);
+                    
+                    if (shapeType == "r") {
+                    
                     
                     matrix.fillRect(xCoordByteRead.toInt(), yCoordByteRead.toInt(), xCoord2ByteRead.toInt(), yCoord2ByteRead.toInt(), matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt()));
+
+                    }
+
+                       if (shapeType == "c") {
+                    
+                    
+                           matrix.drawCircle(10, 10, 10, matrix.Color333(0, 0, 7));
+
+                    }
 
 
                     readString=""; //clears variable for new input
@@ -104,6 +123,8 @@ char  c = Serial.read();
                      redByteRead="";
                      greenByteRead="";
                      blueByteRead="";
+
+                     shapeType="";
                            
   
 }
