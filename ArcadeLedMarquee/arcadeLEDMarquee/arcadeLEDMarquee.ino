@@ -109,7 +109,7 @@ char  c = Serial.read();
                        if (shapeType == "c") {
                     
                     
-                           matrix.drawCircle(10, 10, 10, matrix.Color333(0, 0, 7));
+                           matrix.drawCircle(xCoordByteRead.toInt(), yCoordByteRead.toInt(), xCoord2ByteRead.toInt(), matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt()));
 
                     }
 

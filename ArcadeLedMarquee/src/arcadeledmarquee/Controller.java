@@ -125,30 +125,32 @@ class listenerSendRGBButton implements ActionListener{
             
 //        byte[] newByteArray = new byte[5];
         
+ String transferString = new String();
+
+        if ("DrawCircle".equals(newGUI.getDrawMode())) {
+            
+           
         
+        transferString = (newGUI.getXCoordString() + "," + newGUI.getYCoordString() + "," + newGUI.getXCoord2String()
+                +"," + "0" + "," +
+                newGUI.getRedLedString() + "," + newGUI.getGreenLedString()  + "," +
+                newGUI.getBlueLedString() + "," + "c" + "+");
+            System.out.println(transferString);
+            
+        }
         
+        if ("DrawPixel".equals(newGUI.getDrawMode())) {
         
-        
-        String transferString = new String();
+  
         
         transferString = (newGUI.getXCoordString() + "," + newGUI.getYCoordString() + "," +
                 newGUI.getRedLedString() + "," + newGUI.getGreenLedString()  + "," +
                 newGUI.getBlueLedString() + "*");
             System.out.println(transferString);
         
-//            transferString = (newGUI.getXCoordString() + newGUI.getYCoordString() +
-//                newGUI.getRedLedString()+ newGUI.getGreenLedString() +
-//                newGUI.getBlueLedString());
-//            System.out.println(transferString);
-            
-//        newByteArray[0] = (newGUI.getXCoordString().get;
-//        
-//        newStringArray[1] = newGUI.getYCoordString();
-//        newStringArray[2] = newGUI.getRedLedString();   
-//        newStringArray[3] = newGUI.getGreenLedString();    
-//        newStringArray[4] = newGUI.getBlueLedString();    
-            
-//        newRGBToLED.createByteArray(newIntArray);
+
+        }            
+
             try {
                 main.sendRGBToArduino(transferString.getBytes());
             } catch (IOException ex) {
@@ -156,8 +158,8 @@ class listenerSendRGBButton implements ActionListener{
             }
         
         } 
+}
         
-        }
 
 
 class listenerSendFileButton implements ActionListener{

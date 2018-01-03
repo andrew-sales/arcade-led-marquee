@@ -601,6 +601,7 @@ public class View extends javax.swing.JFrame {
 
             xCoord2Field.setVisible(true);
             yCoord2Field.setVisible(false);
+            xCoord2Label.setVisible(true);
             xCoord2Label.setText("Diameter");
             yCoord2Label.setVisible(false);
         }
@@ -614,6 +615,7 @@ public class View extends javax.swing.JFrame {
 
             xCoord2Field.setVisible(true);
             yCoord2Field.setVisible(false);
+            xCoord2Label.setVisible(true);
             xCoord2Label.setText("Diameter");
             yCoord2Label.setVisible(false);
         }
@@ -844,6 +846,16 @@ public class View extends javax.swing.JFrame {
     public String getYCoordString () {
         return yCoordField.getText();
     }
+    
+     public String getXCoord2String () {
+        return xCoord2Field.getText();
+    }
+    
+    public String getYCoord2Sstring () {
+        return yCoord2Field.getText();
+    }
+    
+    
     
     public String getRedLedString () {
         return redLedField.getText();
