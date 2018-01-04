@@ -5,6 +5,7 @@
  */
 package arcadeledmarquee;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,6 +24,8 @@ public class ImageToText {
     
     public String inputFile;
     public String outputFolder;
+    public int RGB;
+    public int LEDRGB;
     
     public ImageToText (String imageToConvertFileLocation, String imageOutputFolder)throws FileNotFoundException, IOException {
           
@@ -44,7 +47,7 @@ public class ImageToText {
         
     }
     
-    public static void printAllRGBDetails(BufferedImage image)
+    public void printAllRGBDetails(BufferedImage image)
     {
         int width = image.getWidth();
         int height = image.getHeight();
@@ -60,11 +63,30 @@ public class ImageToText {
         {
             for (int j = 0; j < height; j++)
             {
-                int pixel = image.getRGB(i, j);
-                String idata=(getRGBPixelData(pixel));
+                
+                Color myColor = new Color(image.getRGB(i,j));
+                
+                int red = myColor.getRed();
+                int green = myColor.getGreen();
+                int blue = myColor.getBlue();
+                
+              // System.out.println("red" + red);
+                
+                int newRed = this.convertRGBToLED(red);
+                
+              //  System.out.println("new red" + newRed);
+                
+                int newGreen = this.convertRGBToLED(green);
+                int newBlue = this.convertRGBToLED(blue);
+                
+                //int pixel = image.getRGB(i, j);
+                
+             //   int LEDPixel = this.convertRGBToLED(pixel);
+                
+             //   String idata=(getRGBPixelData(pixel));
 //                System.out.print("Pixel ("+i+","+j+"): ");
                 System.out.print(i + "," + j + ",");
-                System.out.print(idata + "*");
+                System.out.print(newRed + "," + newGreen + "," + newBlue + "*");
                 if(pix_num<total_pix)       //To delete the line that generates at end of file
                 {
                     System.out.println("");
@@ -117,5 +139,37 @@ public class ImageToText {
         return img;
     }
     
+    public int convertRGBToLED (int RGBValue) {
+    
+RGB = RGBValue;
+ 
+
+    if (RGB > 192) {
+        
+    LEDRGB = 4;
+    }
+    else if (RGB > 128) {
+        LEDRGB = 3;
+ 
+}
+    else if (RGB > 64) {
+        LEDRGB = 2;
+ 
+}
+    else if (RGB > 0) {
+        LEDRGB = 1;
+ 
+}
+    
+    else {
+        LEDRGB = 0;
+ 
+}
+    
+    
+
+    return LEDRGB;
+    
+}
    
 }

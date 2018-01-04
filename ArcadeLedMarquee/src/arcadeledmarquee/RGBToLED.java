@@ -28,14 +28,29 @@ public int convertRGBToLED (int RGBValue) {
 RGB = RGBValue;
  
 
-    if (RGB > 127) {
+    if (RGB > 192) {
         
-    LEDRGB = 1;
+    LEDRGB = 4;
     }
+    else if (RGB > 128) {
+        LEDRGB = 3;
+ 
+}
+    else if (RGB > 64) {
+        LEDRGB = 2;
+ 
+}
+    else if (RGB > 0) {
+        LEDRGB = 1;
+ 
+}
+    
     else {
         LEDRGB = 0;
  
 }
+    
+    
 
     return LEDRGB;
     
