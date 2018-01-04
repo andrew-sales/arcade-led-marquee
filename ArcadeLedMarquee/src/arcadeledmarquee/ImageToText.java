@@ -146,18 +146,18 @@ RGB = RGBValue;
 
     if (RGB > 192) {
         
-    LEDRGB = 4;
+    LEDRGB = 3;
     }
     else if (RGB > 128) {
-        LEDRGB = 3;
- 
-}
-    else if (RGB > 64) {
         LEDRGB = 2;
  
 }
-    else if (RGB > 0) {
+    else if (RGB > 64) {
         LEDRGB = 1;
+ 
+}
+    else if (RGB > 0) {
+        LEDRGB = 0;
  
 }
     
