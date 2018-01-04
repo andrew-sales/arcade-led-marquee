@@ -576,7 +576,9 @@ public class View extends javax.swing.JFrame {
             xCoord2Field.setVisible(true);
             yCoord2Field.setVisible(true);
             xCoord2Label.setVisible(true);
+            xCoord2Label.setText("Width");
             yCoord2Label.setVisible(true);
+            yCoord2Label.setText("Length");
         }
 
         if ("FillSquare".equals(this.getDrawMode())) {
@@ -589,7 +591,9 @@ public class View extends javax.swing.JFrame {
             xCoord2Field.setVisible(true);
             yCoord2Field.setVisible(true);
             xCoord2Label.setVisible(true);
+            xCoord2Label.setText("Width");
             yCoord2Label.setVisible(true);
+            yCoord2Label.setText("Length");
         }
 
         if ("DrawCircle".equals(this.getDrawMode())) {
@@ -851,7 +855,7 @@ public class View extends javax.swing.JFrame {
         return xCoord2Field.getText();
     }
     
-    public String getYCoord2Sstring () {
+    public String getYCoord2String () {
         return yCoord2Field.getText();
     }
     
@@ -870,7 +874,7 @@ public class View extends javax.swing.JFrame {
     }
 
     public String getDrawMode() {
-        System.out.println(jComboBox3.getSelectedItem());
+      //  System.out.println(jComboBox3.getSelectedItem());
         
         return (String) jComboBox3.getSelectedItem();
     }

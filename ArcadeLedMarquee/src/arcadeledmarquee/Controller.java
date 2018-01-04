@@ -131,11 +131,23 @@ class listenerSendRGBButton implements ActionListener{
             
            
         
-        transferString = (newGUI.getXCoordString() + "," + newGUI.getYCoordString() + "," + newGUI.getXCoord2String()
+        transferString = ("$" + newGUI.getXCoordString() + "," + newGUI.getYCoordString() + "," + newGUI.getXCoord2String()
                 +"," + "0" + "," +
                 newGUI.getRedLedString() + "," + newGUI.getGreenLedString()  + "," +
-                newGUI.getBlueLedString() + "," + "c" + "+");
-            System.out.println(transferString);
+                newGUI.getBlueLedString() + "," + "c" + "a");
+        //    System.out.println(transferString);
+            
+        }
+        
+        if ("FillSquare".equals(newGUI.getDrawMode())) {
+            
+           
+        
+        transferString = ("$" + newGUI.getXCoordString() + "," + newGUI.getYCoordString() + "," + newGUI.getXCoord2String()
+                +"," + newGUI.getYCoord2String() + "," +
+                newGUI.getRedLedString() + "," + newGUI.getGreenLedString()  + "," +
+                newGUI.getBlueLedString() + "," + "r" + "a");
+           // System.out.println(transferString);
             
         }
         
@@ -143,10 +155,10 @@ class listenerSendRGBButton implements ActionListener{
         
   
         
-        transferString = (newGUI.getXCoordString() + "," + newGUI.getYCoordString() + "," +
+        transferString = ("$" + newGUI.getXCoordString() + "," + newGUI.getYCoordString() + "," +
                 newGUI.getRedLedString() + "," + newGUI.getGreenLedString()  + "," +
                 newGUI.getBlueLedString() + "*");
-            System.out.println(transferString);
+          //  System.out.println(transferString);
         
 
         }            
@@ -169,10 +181,10 @@ class listenerSendFileButton implements ActionListener{
             
          try {
              File file = new File(newGUI.getArduinoDataFile());
-             System.out.println(newGUI.getArduinoDataFile());
+           //  System.out.println(newGUI.getArduinoDataFile());
              FileReader filereader = new FileReader(file);
              BufferedReader bufferedReader = new BufferedReader(filereader);
-             StringBuffer stringBuffer = new StringBuffer();
+             StringBuilder stringBuffer = new StringBuilder();
              String line;
              while ((line = bufferedReader.readLine()) != null) {
                  main.sendRGBToArduino(line.getBytes());

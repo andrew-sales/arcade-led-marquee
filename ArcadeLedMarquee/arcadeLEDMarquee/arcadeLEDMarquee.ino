@@ -37,7 +37,7 @@ String blueByteRead;
 
 String shapeType;
 
-
+int ind0;
 int ind1;
 int ind2;
 int ind3;
@@ -74,47 +74,69 @@ char  c = Serial.read();
 
                               }
 
-   if (c == '+') {  
+   if (c == 'a') {  
 
-      //       matrix.setTextColor(matrix.Color333(7,0,4)); 
-
-
-                    ind1 = readString.indexOf(',');  //finds location of first ,
-                    xCoordByteRead = readString.substring(0, ind1);   //captures first data String   
+     ind0 = readString.indexOf('$');  //finds location of first ,
+                     ind1 = readString.indexOf(',',ind0+1);  //finds location of first 
+//matrix.setTextColor(matrix.Color333(0,0,1));
+          //         matrix.println(ind1);
+                    xCoordByteRead = readString.substring(ind0+1, ind1);   //captures first data String   
+//matrix.setTextColor(matrix.Color333(1,0,0));
+               //       matrix.println(xCoordByteRead);
                     ind2 = readString.indexOf(',', ind1+1 );   //finds location of second ,
-                    yCoordByteRead = readString.substring(ind1+1, ind2+1);   //captures second data String
+                    yCoordByteRead = readString.substring(ind1+1, ind2);   //captures second data String
                     ind3 = readString.indexOf(',', ind2+1 );
-                    xCoord2ByteRead = readString.substring(ind2+1, ind3+1); 
+                    xCoord2ByteRead = readString.substring(ind2+1, ind3); 
                     ind4 = readString.indexOf(',', ind3+1 );
-                    yCoord2ByteRead = readString.substring(ind3+1, ind4+1); //captures remain part of data after last
+                    yCoord2ByteRead = readString.substring(ind3+1, ind4); //captures remain part of data after last
                     
                     ind5 = readString.indexOf(',', ind4+1 );
-                    redByteRead = readString.substring(ind4+1, ind5+1);
+                    redByteRead = readString.substring(ind4+1, ind5);
                     ind6 = readString.indexOf(',', ind5+1 );
-                    greenByteRead = readString.substring(ind5+1, ind6+1); //captures remain part of data after last
+                    greenByteRead = readString.substring(ind5+1, ind6); //captures remain part of data after last
                     ind7 = readString.indexOf(',', ind6+1 );
-                    blueByteRead = readString.substring(ind6+1, ind7+1); //captures remain part of data after last
+                    blueByteRead = readString.substring(ind6+1, ind7); //captures remain part of data after last
                     ind8 = readString.indexOf(',', ind7+1 );
-                    shapeType = readString.substring(ind7+1); //captures remain part of data after last
+                    shapeType = readString.substring(ind7+1, ind8); //captures remain part of data after last
 
-                     matrix.println(shapeType);
+                   // matrix.println(xCoordByteRead);
                     
-                    if (shapeType == "r") {
-                    
-                    
-                    matrix.fillRect(xCoordByteRead.toInt(), yCoordByteRead.toInt(), xCoord2ByteRead.toInt(), yCoord2ByteRead.toInt(), matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt()));
+                  if (shapeType == "r") {
+                   
+                   
+                  matrix.fillRect(xCoordByteRead.toInt(), yCoordByteRead.toInt(), xCoord2ByteRead.toInt(), yCoord2ByteRead.toInt(), matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt()));
 
-                    }
+                 
+               
+                 readString=""; //clears variable for new input
+                                         
+                     xCoordByteRead="";
+                     yCoordByteRead="";
+                     xCoord2ByteRead="";
+                     yCoord2ByteRead="";
+                     
+                     redByteRead="";
+                     greenByteRead="";
+                     blueByteRead="";
 
-                       if (shapeType == "c") {
-                    
+                     shapeType="";
+
+                     
+                 
+                   }
+
+                     if (shapeType == "c") {
+                  //   matrix.setTextColor(matrix.Color333(7,0,4)); 
+
+//matrix.println(readString);
                     
                            matrix.drawCircle(xCoordByteRead.toInt(), yCoordByteRead.toInt(), xCoord2ByteRead.toInt(), matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt()));
-
-                    }
+readString=""; //clears variable for new input
+                   }
 
 
                     readString=""; //clears variable for new input
+                                         
                      xCoordByteRead="";
                      yCoordByteRead="";
                      xCoord2ByteRead="";
@@ -126,23 +148,38 @@ char  c = Serial.read();
 
                      shapeType="";
                            
-  
+//  matrix.println(readString);
 }
 
 
- if (c == '*') {  
-  
+ else if (c == '*') {  
+ // matrix.setTextColor(matrix.Color333(0,0,1));
 
-                      ind1 = readString.indexOf(',');  //finds location of first ,
-                      xCoordByteRead = readString.substring(0, ind1);   //captures first data String   
+
+
+
+                      ind0 = readString.indexOf('$');  //finds location of first ,
+   //matrix.setTextColor(matrix.Color333(0,1,0));
+                 //      matrix.println(ind0);
+                    
+                      ind1 = readString.indexOf(',',ind0+1);  //finds location of first ,
+  //                       matrix.println(ind1);
+
+                 //        matrix.setTextColor(matrix.Color333(1,0,0));
+                      xCoordByteRead = readString.substring(ind0+1, ind1);   //captures first data String   
+
+                      
+                    // matrix.println(xCoordByteRead);
                       ind2 = readString.indexOf(',', ind1+1 );   //finds location of second ,
-                      yCoordByteRead = readString.substring(ind1+1, ind2+1);   //captures second data String
+                      yCoordByteRead = readString.substring(ind1+1, ind2);   //captures second data String
                       ind3 = readString.indexOf(',', ind2+1 );
-                      redByteRead = readString.substring(ind2+1, ind3+1);
+                      redByteRead = readString.substring(ind2+1, ind3);
                       ind4 = readString.indexOf(',', ind3+1 );
-                      greenByteRead = readString.substring(ind3+1, ind4+1); //captures remain part of data after last
+                      greenByteRead = readString.substring(ind3+1, ind4); //captures remain part of data after last
                       ind5 = readString.indexOf(',', ind4+1 );
                       blueByteRead = readString.substring(ind4+1); //captures remain part of data after last
+
+//matrix.println(readString);
 
                       matrix.drawPixel(xCoordByteRead.toInt(), yCoordByteRead.toInt(), matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt())); 
 
@@ -162,6 +199,9 @@ char  c = Serial.read();
        
        
 else {     
+                 
+                  
+               //   matrix.println(readString);
                   readString += c; //makes the string readString
     
 } 
