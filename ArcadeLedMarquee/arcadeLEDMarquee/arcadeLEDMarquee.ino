@@ -74,15 +74,11 @@ char  c = Serial.read();
 
                               }
 
-   if (c == 'a') {  
+   if (c == '&') {  
 
-     ind0 = readString.indexOf('$');  //finds location of first ,
-                     ind1 = readString.indexOf(',',ind0+1);  //finds location of first 
-//matrix.setTextColor(matrix.Color333(0,0,1));
-          //         matrix.println(ind1);
+                    ind0 = readString.indexOf('$');  //finds location of first ,
+                    ind1 = readString.indexOf(',',ind0+1);  //finds location of first 
                     xCoordByteRead = readString.substring(ind0+1, ind1);   //captures first data String   
-//matrix.setTextColor(matrix.Color333(1,0,0));
-               //       matrix.println(xCoordByteRead);
                     ind2 = readString.indexOf(',', ind1+1 );   //finds location of second ,
                     yCoordByteRead = readString.substring(ind1+1, ind2);   //captures second data String
                     ind3 = readString.indexOf(',', ind2+1 );
@@ -98,30 +94,33 @@ char  c = Serial.read();
                     blueByteRead = readString.substring(ind6+1, ind7); //captures remain part of data after last
                     ind8 = readString.indexOf(',', ind7+1 );
                     shapeType = readString.substring(ind7+1, ind8); //captures remain part of data after last
-
-                   // matrix.println(xCoordByteRead);
                     
                   if (shapeType == "r") {
+                  
+                    matrix.drawRect(xCoordByteRead.toInt(), yCoordByteRead.toInt(), xCoord2ByteRead.toInt(), yCoord2ByteRead.toInt(), matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt()));
+                  }
+                  
+                   if (shapeType == "q") {
                    
                    
                   matrix.fillRect(xCoordByteRead.toInt(), yCoordByteRead.toInt(), xCoord2ByteRead.toInt(), yCoord2ByteRead.toInt(), matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt()));
-
-                 
-               
-                 readString=""; //clears variable for new input
-                                         
-                     xCoordByteRead="";
-                     yCoordByteRead="";
-                     xCoord2ByteRead="";
-                     yCoord2ByteRead="";
-                     
-                     redByteRead="";
-                     greenByteRead="";
-                     blueByteRead="";
-
-                     shapeType="";
-
-                     
+//
+//                 
+//               
+//                 readString=""; //clears variable for new input
+//                                         
+//                     xCoordByteRead="";
+//                     yCoordByteRead="";
+//                     xCoord2ByteRead="";
+//                     yCoord2ByteRead="";
+//                     
+//                     redByteRead="";
+//                     greenByteRead="";
+//                     blueByteRead="";
+//
+//                     shapeType="";
+//
+//                     
                  
                    }
 
@@ -131,8 +130,36 @@ char  c = Serial.read();
 //matrix.println(readString);
                     
                            matrix.drawCircle(xCoordByteRead.toInt(), yCoordByteRead.toInt(), xCoord2ByteRead.toInt(), matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt()));
-readString=""; //clears variable for new input
+//readString=""; //clears variable for new input
                    }
+
+                   if (shapeType == "f") {
+                  //   matrix.setTextColor(matrix.Color333(7,0,4)); 
+
+//matrix.println(readString);
+                    
+                           matrix.fillCircle(xCoordByteRead.toInt(), yCoordByteRead.toInt(), xCoord2ByteRead.toInt(), matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt()));
+//readString=""; //clears variable for new input
+                   }
+
+                    if (shapeType == "l") {
+                  //   matrix.setTextColor(matrix.Color333(7,0,4)); 
+
+//matrix.println(readString);
+ 
+                           matrix.drawLine(xCoordByteRead.toInt(), yCoordByteRead.toInt(), xCoord2ByteRead.toInt(),yCoord2ByteRead.toInt(), matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt()));
+//readString=""; //clears variable for new input
+                   }
+
+  if (shapeType == "n") {
+                  //   matrix.setTextColor(matrix.Color333(7,0,4)); 
+
+//matrix.println(readString);
+ 
+                             matrix.fillScreen(matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt()));
+//readString=""; //clears variable for new input
+                   }
+
 
 
                     readString=""; //clears variable for new input

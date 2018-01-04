@@ -303,7 +303,7 @@ public class View extends javax.swing.JFrame {
             drawingPanel.add(greenLedField, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 36, -1));
             drawingPanel.add(blueLedField, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 36, -1));
 
-            jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DrawPixel", "DrawSquare", "FillSquare", "DrawCircle", "FillCircle", "Line", "FillScreen" }));
+            jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DrawPixel", "DrawRectangle", "FillRectangle", "DrawCircle", "FillCircle", "Line", "FillScreen" }));
             jComboBox3.addComponentListener(new java.awt.event.ComponentAdapter() {
                 public void componentShown(java.awt.event.ComponentEvent evt) {
                     jComboBox3ComponentShown(evt);
@@ -566,7 +566,7 @@ public class View extends javax.swing.JFrame {
             yCoord2Label.setVisible(false);
         }
 
-        if ("DrawSquare".equals(this.getDrawMode())) {
+        if ("DrawRectangle".equals(this.getDrawMode())) {
 
             xCoordField.setVisible(true);
             yCoordField.setVisible(true);
@@ -578,10 +578,10 @@ public class View extends javax.swing.JFrame {
             xCoord2Label.setVisible(true);
             xCoord2Label.setText("Width");
             yCoord2Label.setVisible(true);
-            yCoord2Label.setText("Length");
+            yCoord2Label.setText("Height");
         }
 
-        if ("FillSquare".equals(this.getDrawMode())) {
+        if ("FillRectangle".equals(this.getDrawMode())) {
 
             xCoordField.setVisible(true);
             yCoordField.setVisible(true);
@@ -593,7 +593,7 @@ public class View extends javax.swing.JFrame {
             xCoord2Label.setVisible(true);
             xCoord2Label.setText("Width");
             yCoord2Label.setVisible(true);
-            yCoord2Label.setText("Length");
+            yCoord2Label.setText("Height");
         }
 
         if ("DrawCircle".equals(this.getDrawMode())) {
@@ -631,10 +631,12 @@ public class View extends javax.swing.JFrame {
             xCoordLabel.setVisible(true);
             yCoordLabel.setVisible(true);
 
-            xCoord2Field.setVisible(false);
-            yCoord2Field.setVisible(false);
-            xCoord2Label.setVisible(false);
-            yCoord2Label.setVisible(false);
+            xCoord2Field.setVisible(true);
+            yCoord2Field.setVisible(true);
+            xCoord2Label.setVisible(true);
+            xCoord2Label.setText("X-Coord 2");
+            yCoord2Label.setVisible(true);
+            yCoord2Label.setText("Y-Coord 2");
         }
 
         if ("FillScreen".equals(this.getDrawMode())) {

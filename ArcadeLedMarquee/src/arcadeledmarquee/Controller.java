@@ -5,6 +5,7 @@
  */
 package arcadeledmarquee;
 
+import static arcadeledmarquee.View.main;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -125,43 +126,95 @@ class listenerSendRGBButton implements ActionListener{
             
 //        byte[] newByteArray = new byte[5];
         
- String transferString = new String();
-
-        if ("DrawCircle".equals(newGUI.getDrawMode())) {
-            
-           
-        
-        transferString = ("$" + newGUI.getXCoordString() + "," + newGUI.getYCoordString() + "," + newGUI.getXCoord2String()
-                +"," + "0" + "," +
-                newGUI.getRedLedString() + "," + newGUI.getGreenLedString()  + "," +
-                newGUI.getBlueLedString() + "," + "c" + "a");
-        //    System.out.println(transferString);
-            
+ String transferString;
+ 
+ 
+ String drawModeIn = newGUI.getDrawMode();
+ 
+ String drawModeOut;
+ 
+ if ("DrawPixel".equals(drawModeIn)) {
+     
+     transferString = ("$" + newGUI.getXCoordString() + "," + newGUI.getYCoordString() + "," +
+            newGUI.getRedLedString() + "," + newGUI.getGreenLedString()  + "," +
+            newGUI.getBlueLedString() + "*");
+ }
+ 
+ else {
+ 
+ switch (drawModeIn) {
+        case "DrawRectangle": drawModeOut = "r";
+            break;
+        case "FillRectangle": drawModeOut = "q";
+            break;
+         case "DrawCircle": drawModeOut = "c";
+            break;   
+         case "FillCircle": drawModeOut = "f";
+            break;   
+        case "Line": drawModeOut = "l";
+            break;     
+        case "FillScreen": drawModeOut = "n";
+            break;     
+        default: drawModeOut ="";
+            break;          
         }
-        
-        if ("FillSquare".equals(newGUI.getDrawMode())) {
-            
-           
-        
+      
+       
         transferString = ("$" + newGUI.getXCoordString() + "," + newGUI.getYCoordString() + "," + newGUI.getXCoord2String()
-                +"," + newGUI.getYCoord2String() + "," +
+               +"," + newGUI.getYCoord2String() + "," +
                 newGUI.getRedLedString() + "," + newGUI.getGreenLedString()  + "," +
-                newGUI.getBlueLedString() + "," + "r" + "a");
-           // System.out.println(transferString);
-            
-        }
+               newGUI.getBlueLedString() + "," + drawModeOut + "&");       
+ 
+ }
+ 
+//        if ("DrawCircle".equals(newGUI.getDrawMode())) {         
+//        
+//        transferString = ("$" + newGUI.getXCoordString() + "," + newGUI.getYCoordString() + "," + newGUI.getXCoord2String()
+//                +"," + "0" + "," +
+//                newGUI.getRedLedString() + "," + newGUI.getGreenLedString()  + "," +
+//                newGUI.getBlueLedString() + "," + "c" + "a");       
+//        }
         
-        if ("DrawPixel".equals(newGUI.getDrawMode())) {
         
-  
         
-        transferString = ("$" + newGUI.getXCoordString() + "," + newGUI.getYCoordString() + "," +
-                newGUI.getRedLedString() + "," + newGUI.getGreenLedString()  + "," +
-                newGUI.getBlueLedString() + "*");
-          //  System.out.println(transferString);
+        
+        
+//        if ("FillSquare".equals(newGUI.getDrawMode())) {
+//            
+//           
+//        
+//        transferString = ("$" + newGUI.getXCoordString() + "," + newGUI.getYCoordString() + "," + newGUI.getXCoord2String()
+//                +"," + newGUI.getYCoord2String() + "," +
+//                newGUI.getRedLedString() + "," + newGUI.getGreenLedString()  + "," +
+//                newGUI.getBlueLedString() + "," + "s" + "a");
+//           // System.out.println(transferString);
+//            
+//        }
+//        
+//        
+//        if ("FillSquare".equals(newGUI.getDrawMode())) {
+//            
+//           
+//        
+//        transferString = ("$" + newGUI.getXCoordString() + "," + newGUI.getYCoordString() + "," + newGUI.getXCoord2String()
+//                +"," + newGUI.getYCoord2String() + "," +
+//                newGUI.getRedLedString() + "," + newGUI.getGreenLedString()  + "," +
+//                newGUI.getBlueLedString() + "," + "r" + "a");
+//           // System.out.println(transferString);
+//            
+//        }
+        
+//        if ("DrawPixel".equals(newGUI.getDrawMode())) {
+//        
+//  
+//        
+//        transferString = ("$" + newGUI.getXCoordString() + "," + newGUI.getYCoordString() + "," +
+//                newGUI.getRedLedString() + "," + newGUI.getGreenLedString()  + "," +
+//                newGUI.getBlueLedString() + "*");
+//          //  System.out.println(transferString);
         
 
-        }            
+//        }            
 
             try {
                 main.sendRGBToArduino(transferString.getBytes());

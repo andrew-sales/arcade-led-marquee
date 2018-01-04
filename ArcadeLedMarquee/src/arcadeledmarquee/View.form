@@ -456,8 +456,8 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="7">
                 <StringItem index="0" value="DrawPixel"/>
-                <StringItem index="1" value="DrawSquare"/>
-                <StringItem index="2" value="FillSquare"/>
+                <StringItem index="1" value="DrawRectangle"/>
+                <StringItem index="2" value="FillRectangle"/>
                 <StringItem index="3" value="DrawCircle"/>
                 <StringItem index="4" value="FillCircle"/>
                 <StringItem index="5" value="Line"/>
