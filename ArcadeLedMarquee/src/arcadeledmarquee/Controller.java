@@ -38,7 +38,6 @@ public Controller () throws ClassNotFoundException, InstantiationException, Ille
     
     main = new SerialConnection();
 
-//this.newGUI.selectFileForConversionActionListener (new ListenerSelectFileForConversionButton());
 this.newGUI.ConvertButton (new ListenerSelectFileForConversionButton());
 this.newGUI.OpenPortButtonListener(new ListenerOpenPortButton());
 this.newGUI.ClosePortButtonListener(new ListenerClosePortButton());
@@ -46,6 +45,9 @@ this.newGUI.SendDataButtonListener(new ListenerSendDataButton());
 this.newGUI.SendRGBButtonListener(new listenerSendRGBButton());
 this.newGUI.SendFileButtonListener(new listenerSendFileButton());
 this.newGUI.ClearPanelButtonListener(new listenerClearPanelButton());
+this.newGUI.SendTextButtonListener(new listenerSendTextButton());
+
+
 
 }
 
@@ -165,56 +167,7 @@ class listenerSendRGBButton implements ActionListener{
                 newGUI.getRedLedString() + "," + newGUI.getGreenLedString()  + "," +
                newGUI.getBlueLedString() + "," + drawModeOut + "&");       
  
- }
- 
-//        if ("DrawCircle".equals(newGUI.getDrawMode())) {         
-//        
-//        transferString = ("$" + newGUI.getXCoordString() + "," + newGUI.getYCoordString() + "," + newGUI.getXCoord2String()
-//                +"," + "0" + "," +
-//                newGUI.getRedLedString() + "," + newGUI.getGreenLedString()  + "," +
-//                newGUI.getBlueLedString() + "," + "c" + "a");       
-//        }
-        
-        
-        
-        
-        
-//        if ("FillSquare".equals(newGUI.getDrawMode())) {
-//            
-//           
-//        
-//        transferString = ("$" + newGUI.getXCoordString() + "," + newGUI.getYCoordString() + "," + newGUI.getXCoord2String()
-//                +"," + newGUI.getYCoord2String() + "," +
-//                newGUI.getRedLedString() + "," + newGUI.getGreenLedString()  + "," +
-//                newGUI.getBlueLedString() + "," + "s" + "a");
-//           // System.out.println(transferString);
-//            
-//        }
-//        
-//        
-//        if ("FillSquare".equals(newGUI.getDrawMode())) {
-//            
-//           
-//        
-//        transferString = ("$" + newGUI.getXCoordString() + "," + newGUI.getYCoordString() + "," + newGUI.getXCoord2String()
-//                +"," + newGUI.getYCoord2String() + "," +
-//                newGUI.getRedLedString() + "," + newGUI.getGreenLedString()  + "," +
-//                newGUI.getBlueLedString() + "," + "r" + "a");
-//           // System.out.println(transferString);
-//            
-//        }
-        
-//        if ("DrawPixel".equals(newGUI.getDrawMode())) {
-//        
-//  
-//        
-//        transferString = ("$" + newGUI.getXCoordString() + "," + newGUI.getYCoordString() + "," +
-//                newGUI.getRedLedString() + "," + newGUI.getGreenLedString()  + "," +
-//                newGUI.getBlueLedString() + "*");
-//          //  System.out.println(transferString);
-        
-
-//        }            
+ }      
 
             try {
                 main.sendRGBToArduino(transferString.getBytes());
@@ -224,7 +177,37 @@ class listenerSendRGBButton implements ActionListener{
         
         } 
 }
+  
+
+class listenerSendTextButton implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {   
+            
+           
+            String transferString;
+            String text = newGUI.getMarqueeText();         
+            String textSize = newGUI.getMarqueeTextSize();
+            String textWrap = String.valueOf(newGUI.getMarqueeTextWrap());
+            
+            
+            transferString = ("$" + newGUI.getXCoordString() + "," + newGUI.getYCoordString() + "," + textSize
+               + "," + textWrap + ","  +
+                newGUI.getRedLedString() + "," + newGUI.getGreenLedString()  + "," +
+               newGUI.getBlueLedString() + "," + text + "%");     
+            
+            System.out.println(transferString);
+            
+            
+              try {
+                main.sendRGBToArduino(transferString.getBytes());
+            } catch (IOException ex) {
+                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+        } 
         
+        }
 
 
 class listenerSendFileButton implements ActionListener{

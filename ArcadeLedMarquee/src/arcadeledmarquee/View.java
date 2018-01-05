@@ -95,13 +95,13 @@ public class View extends javax.swing.JFrame {
         sendFileButton = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        marqueeTextArea = new javax.swing.JTextArea();
         jLabel19 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        marqueeTextSize = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jButton3 = new javax.swing.JButton();
+        marqueeTextWrap = new javax.swing.JCheckBox();
+        marqueeTextScroll = new javax.swing.JCheckBox();
+        sendTextButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -367,26 +367,26 @@ public class View extends javax.swing.JFrame {
 
             jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Marquee Text"));
 
-            jTextArea1.setColumns(20);
-            jTextArea1.setLineWrap(true);
-            jTextArea1.setRows(5);
-            jTextArea1.setWrapStyleWord(true);
-            jScrollPane1.setViewportView(jTextArea1);
+            marqueeTextArea.setColumns(20);
+            marqueeTextArea.setLineWrap(true);
+            marqueeTextArea.setRows(5);
+            marqueeTextArea.setWrapStyleWord(true);
+            jScrollPane1.setViewportView(marqueeTextArea);
 
             jLabel19.setText("Enter Text Below");
 
             jLabel9.setText("Size");
 
-            jCheckBox1.setText("Text Wrap");
-            jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            marqueeTextWrap.setText("Text Wrap");
+            marqueeTextWrap.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jCheckBox1ActionPerformed(evt);
+                    marqueeTextWrapActionPerformed(evt);
                 }
             });
 
-            jCheckBox2.setText("Scrolling");
+            marqueeTextScroll.setText("Scrolling");
 
-            jButton3.setText("Send Text");
+            sendTextButton.setText("Send Text");
 
             javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
             jPanel7.setLayout(jPanel7Layout);
@@ -397,7 +397,7 @@ public class View extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel7Layout.createSequentialGroup()
                             .addGap(173, 173, 173)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(sendTextButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(jPanel7Layout.createSequentialGroup()
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel19)
@@ -405,11 +405,11 @@ public class View extends javax.swing.JFrame {
                                 .addGroup(jPanel7Layout.createSequentialGroup()
                                     .addComponent(jLabel9)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(marqueeTextSize, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(34, 34, 34)
-                                    .addComponent(jCheckBox1)
+                                    .addComponent(marqueeTextWrap)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jCheckBox2)))
+                                    .addComponent(marqueeTextScroll)))
                             .addGap(0, 1, Short.MAX_VALUE)))
                     .addContainerGap())
             );
@@ -423,11 +423,11 @@ public class View extends javax.swing.JFrame {
                     .addGap(18, 18, 18)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel9)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jCheckBox1)
-                        .addComponent(jCheckBox2))
+                        .addComponent(marqueeTextSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(marqueeTextWrap)
+                        .addComponent(marqueeTextScroll))
                     .addGap(18, 18, 18)
-                    .addComponent(jButton3))
+                    .addComponent(sendTextButton))
             );
 
             jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Manage XML"));
@@ -578,9 +578,9 @@ public class View extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_selectArduinoDataButtonActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void marqueeTextWrapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marqueeTextWrapActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_marqueeTextWrapActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
 
@@ -755,9 +755,6 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTextField fileForConversion;
     private javax.swing.JTextField greenLedField;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel19;
@@ -778,10 +775,12 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextArea marqueeTextArea;
+    private javax.swing.JCheckBox marqueeTextScroll;
+    private javax.swing.JTextField marqueeTextSize;
+    private javax.swing.JCheckBox marqueeTextWrap;
     private javax.swing.JButton openPort;
     private javax.swing.JLabel portStatus;
     private javax.swing.JTextField redLedField;
@@ -790,6 +789,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JButton sendData;
     private javax.swing.JButton sendFileButton;
     private javax.swing.JButton sendRGBButton;
+    private javax.swing.JButton sendTextButton;
     private javax.swing.JTextField testConnectionField;
     private javax.swing.JTextField xCoord2Field;
     private javax.swing.JLabel xCoord2Label;
@@ -835,8 +835,12 @@ public class View extends javax.swing.JFrame {
         sendFileButton.addActionListener(listenerSendFileButton);    
     }
      
-     public void ClearPanelButtonListener(ActionListener listenerClearPanelutton){  
-        clearPanelButton.addActionListener(listenerClearPanelutton);    
+     public void ClearPanelButtonListener(ActionListener listenerClearPanelButton){  
+        clearPanelButton.addActionListener(listenerClearPanelButton);    
+    }
+     
+     public void SendTextButtonListener(ActionListener listenerSendTextButton){  
+        sendTextButton.addActionListener(listenerSendTextButton);    
     }
  
  
@@ -912,4 +916,20 @@ public class View extends javax.swing.JFrame {
         return (String) jComboBox3.getSelectedItem();
     }
 
+    public String getMarqueeText () {
+        return marqueeTextArea.getText();
+    }
+    
+    public String getMarqueeTextSize () {
+        return marqueeTextSize.getText();
+    }
+    
+    public boolean getMarqueeTextWrap () {
+        return marqueeTextWrap.isSelected();
+    }
+    
+    public boolean getMarqueeTextScroll () {
+        return marqueeTextScroll.isSelected();
+    }
+    
 }

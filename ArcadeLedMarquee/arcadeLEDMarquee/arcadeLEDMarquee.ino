@@ -31,6 +31,10 @@ String yCoordByteRead;
 String xCoord2ByteRead;
 String yCoord2ByteRead;
 
+String textSize;
+String textWrap;
+String text;
+
 String redByteRead;
 String greenByteRead;
 String blueByteRead;
@@ -64,17 +68,17 @@ if (Serial.available() > 0) {
 
 char  c = Serial.read();
    
-          if(c == '#') {  
+ if(c == '#') {  
             
             
             //This is for clearing the screen
     
    
-            matrix.fillScreen(matrix.Color333(0, 0, 0));
+  matrix.fillScreen(matrix.Color333(0, 0, 0));
 
                               }
 
-   if (c == '&') {  
+ if (c == '&') {  
 
                     ind0 = readString.indexOf('$');  //finds location of first ,
                     ind1 = readString.indexOf(',',ind0+1);  //finds location of first 
@@ -104,60 +108,34 @@ char  c = Serial.read();
                    
                    
                   matrix.fillRect(xCoordByteRead.toInt(), yCoordByteRead.toInt(), xCoord2ByteRead.toInt(), yCoord2ByteRead.toInt(), matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt()));
-//
-//                 
-//               
-//                 readString=""; //clears variable for new input
-//                                         
-//                     xCoordByteRead="";
-//                     yCoordByteRead="";
-//                     xCoord2ByteRead="";
-//                     yCoord2ByteRead="";
-//                     
-//                     redByteRead="";
-//                     greenByteRead="";
-//                     blueByteRead="";
-//
-//                     shapeType="";
-//
-//                     
-                 
+    
                    }
 
                      if (shapeType == "c") {
-                  //   matrix.setTextColor(matrix.Color333(7,0,4)); 
-
-//matrix.println(readString);
-                    
+                  
                            matrix.drawCircle(xCoordByteRead.toInt(), yCoordByteRead.toInt(), xCoord2ByteRead.toInt(), matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt()));
-//readString=""; //clears variable for new input
+
                    }
 
                    if (shapeType == "f") {
-                  //   matrix.setTextColor(matrix.Color333(7,0,4)); 
 
-//matrix.println(readString);
-                    
                            matrix.fillCircle(xCoordByteRead.toInt(), yCoordByteRead.toInt(), xCoord2ByteRead.toInt(), matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt()));
-//readString=""; //clears variable for new input
                    }
 
                     if (shapeType == "l") {
-                  //   matrix.setTextColor(matrix.Color333(7,0,4)); 
 
-//matrix.println(readString);
  
                            matrix.drawLine(xCoordByteRead.toInt(), yCoordByteRead.toInt(), xCoord2ByteRead.toInt(),yCoord2ByteRead.toInt(), matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt()));
-//readString=""; //clears variable for new input
+
                    }
 
-  if (shapeType == "n") {
-                  //   matrix.setTextColor(matrix.Color333(7,0,4)); 
+   if (shapeType == "n") {
+  
 
-//matrix.println(readString);
+
  
                              matrix.fillScreen(matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt()));
-//readString=""; //clears variable for new input
+
                    }
 
 
@@ -175,28 +153,19 @@ char  c = Serial.read();
 
                      shapeType="";
                            
-//  matrix.println(readString);
+
 }
 
 
- else if (c == '*') {  
- // matrix.setTextColor(matrix.Color333(0,0,1));
+  else if (c == '*') {  
 
 
 
 
-                      ind0 = readString.indexOf('$');  //finds location of first ,
-   //matrix.setTextColor(matrix.Color333(0,1,0));
-                 //      matrix.println(ind0);
-                    
+
+                      ind0 = readString.indexOf('$');  //finds location of first ,                  
                       ind1 = readString.indexOf(',',ind0+1);  //finds location of first ,
-  //                       matrix.println(ind1);
-
-                 //        matrix.setTextColor(matrix.Color333(1,0,0));
                       xCoordByteRead = readString.substring(ind0+1, ind1);   //captures first data String   
-
-                      
-                    // matrix.println(xCoordByteRead);
                       ind2 = readString.indexOf(',', ind1+1 );   //finds location of second ,
                       yCoordByteRead = readString.substring(ind1+1, ind2);   //captures second data String
                       ind3 = readString.indexOf(',', ind2+1 );
@@ -205,9 +174,7 @@ char  c = Serial.read();
                       greenByteRead = readString.substring(ind3+1, ind4); //captures remain part of data after last
                       ind5 = readString.indexOf(',', ind4+1 );
                       blueByteRead = readString.substring(ind4+1); //captures remain part of data after last
-
-//matrix.println(readString);
-
+                      
                       matrix.drawPixel(xCoordByteRead.toInt(), yCoordByteRead.toInt(), matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt())); 
 
 
@@ -219,16 +186,84 @@ char  c = Serial.read();
                      blueByteRead="";
 
                     }
- 
-    
 
+ else if (c == '%') {  
+
+
+
+                    ind0 = readString.indexOf('$');  //finds location of first ,
+                    ind1 = readString.indexOf(',',ind0+1);  //finds location of first 
+                    xCoordByteRead = readString.substring(ind0+1, ind1);   //captures first data String   
+                    ind2 = readString.indexOf(',', ind1+1 );   //finds location of second ,
+                    yCoordByteRead = readString.substring(ind1+1, ind2);   //captures second data String
+                    
+                    ind3 = readString.indexOf(',', ind2+1 );
+                    textSize = readString.substring(ind2+1, ind3); 
+                    ind4 = readString.indexOf(',', ind3+1 );
+                    textWrap = readString.substring(ind3+1, ind4); //captures remain part of data after last
+                    
+                    ind5 = readString.indexOf(',', ind4+1 );
+                    redByteRead = readString.substring(ind4+1, ind5);
+                    ind6 = readString.indexOf(',', ind5+1 );
+                    greenByteRead = readString.substring(ind5+1, ind6); //captures remain part of data after last
+                    ind7 = readString.indexOf(',', ind6+1 );
+                    blueByteRead = readString.substring(ind6+1, ind7); //captures remain part of data after last
+                    ind8 = readString.indexOf(',', ind7+1 );
+                    text = readString.substring(ind7+1, ind8); //captures remain part of data after last
+
+
+matrix.setTextSize(textSize.toInt());     // size 1 == 8 pixels high
+//  
+//
+//
+if (textWrap == "true") {
+matrix.setTextWrap(true); // Don't wrap at end of line - will do ourselves
+  
+}
+
+else {
+
+matrix.setTextWrap(false);
+  
+}
+
+//
+  matrix.setCursor(xCoordByteRead.toInt(), yCoordByteRead.toInt());
+//
+matrix.setTextColor(matrix.Color444(redByteRead.toInt(), greenByteRead.toInt(), blueByteRead.toInt()));
+
+
+// matrix.setTextSize(1);     // size 1 == 8 pixels high
+//  matrix.setTextWrap(false);
+// matrix.setTextColor(matrix.Color333(7,7,7));
+//  matrix.println("LED MATRIX!");
+
+
+//matrix.print(readString);
+//
+matrix.print(text);
+
+readString=""; //clears variable for new input
+                                         
+                     xCoordByteRead="";
+                     yCoordByteRead="";
+                     
+                     textSize="";
+                     textWrap="";
+                     
+                     redByteRead="";
+                     greenByteRead="";
+                     blueByteRead="";
+
+                     text="";
+  
+ }
 
        
        
 else {     
                  
-                  
-               //   matrix.println(readString);
+
                   readString += c; //makes the string readString
     
 } 
