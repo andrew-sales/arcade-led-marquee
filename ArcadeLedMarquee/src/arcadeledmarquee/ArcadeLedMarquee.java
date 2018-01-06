@@ -20,6 +20,7 @@ public class ArcadeLedMarquee {
         // TODO code application logic here
         
         Controller newController = new Controller(); 
+      
         
     }
     

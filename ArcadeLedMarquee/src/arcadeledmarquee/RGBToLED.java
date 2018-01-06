@@ -5,6 +5,7 @@
  */
 package arcadeledmarquee;
 
+import java.awt.event.MouseEvent;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 
@@ -56,6 +57,51 @@ RGB = RGBValue;
     
 }
 
+
+public static int convertLEDToRGB (String LEDValue) {
+    
+String LED = LEDValue;
+int RGBLED;
+
+if ("".equals(LED)) {
+    
+    RGBLED = 0;
+}
+
+else if ("0".equals(LED)) {
+    
+    RGBLED = 0;
+}
+
+else if ("4".equals(LED)) {
+    
+    RGBLED = 255;
+}    
+
+else if ("3".equals(LED)) {
+    
+    RGBLED = 192;
+}   
+
+else if ("2".equals(LED)) {
+    
+    RGBLED = 164;
+}
+
+else if ("1".equals(LED)) {
+    
+    RGBLED = 128;
+}   
+
+else {
+    
+    RGBLED = 255;
+}
+    return RGBLED;
+    
+}
+
+
 public byte [] createByteArray (int [] inputArray) 
         
     {
@@ -76,4 +122,45 @@ public byte [] createByteArray (int [] inputArray)
     }
 
       
+//public static boolean mouseDown = false;
+//
+//public static Boolean getMouseDown () {
+//    
+//    return mouseDown;
+//}
+//
+//
+//public void mousePressed(MouseEvent e) {
+//    if (e.getButton() == MouseEvent.BUTTON1) {
+//        mouseDown = true;
+//        initThread();
+//    }
+//}
+//
+//public void mouseReleased(MouseEvent e) {
+//    if (e.getButton() == MouseEvent.BUTTON1) {
+//        mouseDown = false;
+//    }
+//}
+//
+//volatile private boolean isRunning = false;
+//private synchronized boolean checkAndMark() {
+//    if (isRunning) return false;
+//    isRunning = true;
+//    return true;
+//}
+//private void initThread() {
+//    if (checkAndMark()) {
+//        new Thread() {
+//            public void run() {
+//                do {
+//                    //do something
+//                } while (mouseDown);
+//                isRunning = false;
+//            }
+//        }.start();
+////    }
+////}
+
+
 }

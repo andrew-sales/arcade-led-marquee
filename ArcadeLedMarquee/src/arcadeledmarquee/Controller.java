@@ -22,10 +22,12 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author Andy
  */
 public class Controller {
+public Editor editor;
     
 private final View newGUI;
 private final SerialConnection main;
 private final RGBToLED newRGBToLED;
+
 
 
 
@@ -46,6 +48,7 @@ this.newGUI.SendRGBButtonListener(new listenerSendRGBButton());
 this.newGUI.SendFileButtonListener(new listenerSendFileButton());
 this.newGUI.ClearPanelButtonListener(new listenerClearPanelButton());
 this.newGUI.SendTextButtonListener(new listenerSendTextButton());
+this.newGUI.OpenEditorButtonListener(new listenerOpenEditorButton());
 
 
 
@@ -85,7 +88,7 @@ class ListenerOpenPortButton implements ActionListener{
 			}
 		};
 		t.start();
-		System.out.println("Started");
+		//System.out.println("Started");
                 //newGUI.setPortStatusLabel("Searching for Port");
                           
         } 
@@ -196,7 +199,7 @@ class listenerSendTextButton implements ActionListener{
                 newGUI.getRedLedString() + "," + newGUI.getGreenLedString()  + "," +
                newGUI.getBlueLedString() + "," + text + "%");     
             
-            System.out.println(transferString);
+           // System.out.println(transferString);
             
             
               try {
@@ -247,13 +250,35 @@ class listenerSendFileButton implements ActionListener{
            String clear = "#"; 
             try {
                 main.sendRGBToArduino(clear.getBytes());
+                
             } catch (IOException ex) {
                 Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            
+           editor.closeFrame();
            
         }
 }
 
+        
+        class listenerOpenEditorButton implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {   
+            
+              editor = new Editor(main, newGUI);
+             
+             
+             
+        }
+        
+        
+        
+        
+        
+        
+}
 
 
 }
