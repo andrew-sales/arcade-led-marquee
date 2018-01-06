@@ -68,7 +68,6 @@ public class View extends javax.swing.JFrame {
         portStatus = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
         jTextField9 = new javax.swing.JTextField();
-        clearPanelButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         testConnectionField = new javax.swing.JTextField();
         sendData = new javax.swing.JButton();
@@ -77,19 +76,14 @@ public class View extends javax.swing.JFrame {
         yCoordField = new javax.swing.JTextField();
         xCoordLabel = new javax.swing.JLabel();
         yCoordLabel = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         sendRGBButton = new javax.swing.JButton();
-        redLedField = new javax.swing.JTextField();
-        greenLedField = new javax.swing.JTextField();
-        blueLedField = new javax.swing.JTextField();
         jComboBox3 = new javax.swing.JComboBox<>();
         xCoord2Field = new javax.swing.JTextField();
         yCoord2Field = new javax.swing.JTextField();
         xCoord2Label = new javax.swing.JLabel();
         yCoord2Label = new javax.swing.JLabel();
         openEditor = new javax.swing.JButton();
+        clearPanelButton = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         arduinoDataFileField = new javax.swing.JTextField();
         selectArduinoDataButton = new javax.swing.JButton();
@@ -103,7 +97,15 @@ public class View extends javax.swing.JFrame {
         jCheckBox2 = new javax.swing.JCheckBox();
         sendTextButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
+        redSlider = new javax.swing.JSlider();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        greenSlider = new javax.swing.JSlider();
+        jLabel6 = new javax.swing.JLabel();
+        blueSlider = new javax.swing.JSlider();
+        redLedField = new javax.swing.JTextField();
+        greenLedField = new javax.swing.JTextField();
+        blueLedField = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
 
         fileChooser.addActionListener(new java.awt.event.ActionListener() {
@@ -208,8 +210,6 @@ public class View extends javax.swing.JFrame {
 
             jTextField9.setText("9600");
 
-            clearPanelButton.setText("Clear Panel");
-
             javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
             jPanel2.setLayout(jPanel2Layout);
             jPanel2Layout.setHorizontalGroup(
@@ -226,8 +226,7 @@ public class View extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                            .addComponent(clearPanelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(0, 0, Short.MAX_VALUE)
                             .addComponent(openPort, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(portStatus)
@@ -245,9 +244,7 @@ public class View extends javax.swing.JFrame {
                         .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel7))
                     .addGap(18, 18, 18)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(openPort)
-                        .addComponent(clearPanelButton))
+                    .addComponent(openPort)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(closePort)
@@ -293,20 +290,8 @@ public class View extends javax.swing.JFrame {
             yCoordLabel.setText("Y-Coord");
             drawingPanel.add(yCoordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 102, -1, -1));
 
-            jLabel4.setText("Red");
-            drawingPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, -1));
-
-            jLabel5.setText("Green");
-            drawingPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 68, -1, -1));
-
-            jLabel6.setText("Blue");
-            drawingPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(209, 106, -1, -1));
-
             sendRGBButton.setText("Send Data");
             drawingPanel.add(sendRGBButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 94, -1));
-            drawingPanel.add(redLedField, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 36, -1));
-            drawingPanel.add(greenLedField, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 36, -1));
-            drawingPanel.add(blueLedField, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 36, -1));
 
             jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DrawPixel", "DrawRectangle", "FillRectangle", "DrawCircle", "FillCircle", "Line", "FillScreen" }));
             jComboBox3.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -330,7 +315,10 @@ public class View extends javax.swing.JFrame {
             drawingPanel.add(yCoord2Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 178, -1, -1));
 
             openEditor.setText("Open Editor");
-            drawingPanel.add(openEditor, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 90, -1));
+            drawingPanel.add(openEditor, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 90, -1));
+
+            clearPanelButton.setText("Clear Panel");
+            drawingPanel.add(clearPanelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 92, -1));
 
             jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Marquee Image"));
 
@@ -431,30 +419,86 @@ public class View extends javax.swing.JFrame {
                     .addGap(9, 9, 9))
             );
 
-            jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Manage XML"));
+            jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Manage Colours"));
+
+            redSlider.setMajorTickSpacing(1);
+            redSlider.setMaximum(4);
+            redSlider.setPaintLabels(true);
+            redSlider.setPaintTicks(true);
+            redSlider.setSnapToTicks(true);
+            redSlider.setValue(0);
+
+            jLabel4.setText("Red");
+
+            jLabel5.setText("Green");
+
+            greenSlider.setMajorTickSpacing(1);
+            greenSlider.setMaximum(4);
+            greenSlider.setPaintLabels(true);
+            greenSlider.setPaintTicks(true);
+            greenSlider.setSnapToTicks(true);
+            greenSlider.setValue(0);
+
+            jLabel6.setText("Blue");
+
+            blueSlider.setMajorTickSpacing(1);
+            blueSlider.setMaximum(4);
+            blueSlider.setPaintLabels(true);
+            blueSlider.setPaintTicks(true);
+            blueSlider.setSnapToTicks(true);
+            blueSlider.setToolTipText("");
+            blueSlider.setValue(0);
 
             javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
             jPanel4.setLayout(jPanel4Layout);
             jPanel4Layout.setHorizontalGroup(
                 jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 367, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(28, 28, 28)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel6))
+                    .addGap(31, 31, 31)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(greenSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                        .addComponent(redSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(blueSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(redLedField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(greenLedField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(blueLedField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(50, 50, 50))
             );
             jPanel4Layout.setVerticalGroup(
                 jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 0, Short.MAX_VALUE)
-            );
-
-            jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Animations"));
-
-            javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-            jPanel6.setLayout(jPanel6Layout);
-            jPanel6Layout.setHorizontalGroup(
-                jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 0, Short.MAX_VALUE)
-            );
-            jPanel6Layout.setVerticalGroup(
-                jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 51, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGap(22, 22, 22)
+                            .addComponent(jLabel4))
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(redLedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(redSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGap(19, 19, 19)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(greenSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGap(14, 14, 14)
+                            .addComponent(jLabel5))
+                        .addComponent(greenLedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(blueSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(21, 21, 21)))
+                        .addComponent(blueLedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(31, 31, 31))
             );
 
             jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Display Rules"));
@@ -467,7 +511,7 @@ public class View extends javax.swing.JFrame {
             );
             jPanel8Layout.setVerticalGroup(
                 jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 122, Short.MAX_VALUE)
+                .addGap(0, 91, Short.MAX_VALUE)
             );
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -486,18 +530,16 @@ public class View extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(0, 0, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -509,10 +551,8 @@ public class View extends javax.swing.JFrame {
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(4, 4, 4)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap())
@@ -745,6 +785,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JFileChooser arduinoDataFile;
     private javax.swing.JTextField arduinoDataFileField;
     private javax.swing.JTextField blueLedField;
+    private javax.swing.JSlider blueSlider;
     private javax.swing.JButton clearPanelButton;
     private javax.swing.JButton closePort;
     private javax.swing.JButton convertButton;
@@ -754,6 +795,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JFileChooser fileChooser;
     private javax.swing.JTextField fileForConversion;
     private javax.swing.JTextField greenLedField;
+    private javax.swing.JSlider greenSlider;
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
@@ -771,7 +813,6 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
@@ -784,6 +825,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JButton openPort;
     private javax.swing.JLabel portStatus;
     private javax.swing.JTextField redLedField;
+    private javax.swing.JSlider redSlider;
     private javax.swing.JButton selectArduinoDataButton;
     private javax.swing.JButton selectFileForConversionButton;
     private javax.swing.JButton sendData;
@@ -902,16 +944,28 @@ public class View extends javax.swing.JFrame {
     
     
     
+//    public String getRedLedString () {
+//        return redLedField.getText();
+//    }
+    
     public String getRedLedString () {
-        return redLedField.getText();
+        return Integer.toString(redSlider.getValue());
     }
     
+//    public String getGreenLedString () {
+//        return greenLedField.getText();
+//    }
+//    
+//    public String getBlueLedString () {
+//        return blueLedField.getText();
+//    }
+    
     public String getGreenLedString () {
-        return greenLedField.getText();
+        return Integer.toString(greenSlider.getValue());
     }
     
     public String getBlueLedString () {
-        return blueLedField.getText();
+        return Integer.toString(blueSlider.getValue());
     }
 
     public String getDrawMode() {
