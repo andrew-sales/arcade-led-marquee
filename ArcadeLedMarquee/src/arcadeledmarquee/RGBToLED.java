@@ -5,9 +5,7 @@
  */
 package arcadeledmarquee;
 
-import java.awt.event.MouseEvent;
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
+
 
 /**
  *
@@ -57,42 +55,31 @@ RGB = RGBValue;
 public static int convertLEDToRGB (String LEDValue) {
     
 String LED = LEDValue;
-int RGBLED;
+int RGBLED = 0;
 
-if ("".equals(LED)) {
-    
-    RGBLED = 0;
-}
-
-else if ("0".equals(LED)) {
-    
-    RGBLED = 0;
-}
-
-else if ("4".equals(LED)) {
-    
-    RGBLED = 255;
-}    
-
-else if ("3".equals(LED)) {
-    
-    RGBLED = 192;
-}   
-
-else if ("2".equals(LED)) {
-    
-    RGBLED = 164;
-}
-
-else if ("1".equals(LED)) {
-    
-    RGBLED = 128;
-}   
-
-else {
-    
-    RGBLED = 255;
-}
+if (null != LED) switch (LED) {
+        case "":
+            RGBLED = 0;
+            break;
+        case "0":
+            RGBLED = 0;
+            break;
+        case "4":
+            RGBLED = 255;
+            break;
+        case "3":
+            RGBLED = 192;
+            break;
+        case "2":
+            RGBLED = 164;
+            break;
+        case "1":
+            RGBLED = 128;
+            break;
+        default:
+            RGBLED = 255;
+            break;
+    }
     return RGBLED;
     
 }
