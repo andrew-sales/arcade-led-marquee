@@ -5,6 +5,7 @@
  */
 package arcadeledmarquee;
 
+import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -103,9 +104,7 @@ public class View extends javax.swing.JFrame {
         greenSlider = new javax.swing.JSlider();
         jLabel6 = new javax.swing.JLabel();
         blueSlider = new javax.swing.JSlider();
-        redLedField = new javax.swing.JTextField();
-        greenLedField = new javax.swing.JTextField();
-        blueLedField = new javax.swing.JTextField();
+        colorMix = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
 
         fileChooser.addActionListener(new java.awt.event.ActionListener() {
@@ -427,6 +426,16 @@ public class View extends javax.swing.JFrame {
             redSlider.setPaintTicks(true);
             redSlider.setSnapToTicks(true);
             redSlider.setValue(0);
+            redSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+                public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                    redSliderStateChanged(evt);
+                }
+            });
+            redSlider.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+                public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                    redSliderPropertyChange(evt);
+                }
+            });
 
             jLabel4.setText("Red");
 
@@ -438,6 +447,11 @@ public class View extends javax.swing.JFrame {
             greenSlider.setPaintTicks(true);
             greenSlider.setSnapToTicks(true);
             greenSlider.setValue(0);
+            greenSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+                public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                    greenSliderStateChanged(evt);
+                }
+            });
 
             jLabel6.setText("Blue");
 
@@ -448,6 +462,25 @@ public class View extends javax.swing.JFrame {
             blueSlider.setSnapToTicks(true);
             blueSlider.setToolTipText("");
             blueSlider.setValue(0);
+            blueSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+                public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                    blueSliderStateChanged(evt);
+                }
+            });
+
+            colorMix.setBackground(new java.awt.Color(0, 0, 0));
+            colorMix.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+            javax.swing.GroupLayout colorMixLayout = new javax.swing.GroupLayout(colorMix);
+            colorMix.setLayout(colorMixLayout);
+            colorMixLayout.setHorizontalGroup(
+                colorMixLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 50, Short.MAX_VALUE)
+            );
+            colorMixLayout.setVerticalGroup(
+                colorMixLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 50, Short.MAX_VALUE)
+            );
 
             javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
             jPanel4.setLayout(jPanel4Layout);
@@ -464,11 +497,8 @@ public class View extends javax.swing.JFrame {
                         .addComponent(greenSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                         .addComponent(redSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addComponent(blueSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(redLedField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(greenLedField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(blueLedField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                    .addComponent(colorMix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(50, 50, 50))
             );
             jPanel4Layout.setVerticalGroup(
@@ -480,25 +510,27 @@ public class View extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addContainerGap()
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(redLedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(redSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGap(19, 19, 19)
+                            .addComponent(redSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(13, 13, 13)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(greenSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGap(14, 14, 14)
-                            .addComponent(jLabel5))
-                        .addComponent(greenLedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(blueSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(21, 21, 21)))
-                        .addComponent(blueLedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(31, 31, 31))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(greenSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addGap(14, 14, 14)
+                                    .addComponent(jLabel5)))
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addComponent(blueSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addGap(26, 26, 26)
+                                    .addComponent(jLabel6))))
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGap(55, 55, 55)
+                            .addComponent(colorMix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
 
             jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Display Rules"));
@@ -730,6 +762,24 @@ public class View extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox3ComponentShown
 
+    private void redSliderPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_redSliderPropertyChange
+        // TODO add your handling code here:
+       
+        
+    }//GEN-LAST:event_redSliderPropertyChange
+
+    private void redSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_redSliderStateChanged
+    setColorMixColor();
+    }//GEN-LAST:event_redSliderStateChanged
+
+    private void greenSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_greenSliderStateChanged
+       setColorMixColor();
+    }//GEN-LAST:event_greenSliderStateChanged
+
+    private void blueSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_blueSliderStateChanged
+       setColorMixColor();
+    }//GEN-LAST:event_blueSliderStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -784,17 +834,16 @@ public class View extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFileChooser arduinoDataFile;
     private javax.swing.JTextField arduinoDataFileField;
-    private javax.swing.JTextField blueLedField;
     private javax.swing.JSlider blueSlider;
     private javax.swing.JButton clearPanelButton;
     private javax.swing.JButton closePort;
+    private javax.swing.JPanel colorMix;
     private javax.swing.JButton convertButton;
     private javax.swing.JFileChooser directoryChooser;
     private javax.swing.JTextField directoryForSaving;
     private javax.swing.JPanel drawingPanel;
     private javax.swing.JFileChooser fileChooser;
     private javax.swing.JTextField fileForConversion;
-    private javax.swing.JTextField greenLedField;
     private javax.swing.JSlider greenSlider;
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
@@ -824,7 +873,6 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JButton openEditor;
     private javax.swing.JButton openPort;
     private javax.swing.JLabel portStatus;
-    private javax.swing.JTextField redLedField;
     private javax.swing.JSlider redSlider;
     private javax.swing.JButton selectArduinoDataButton;
     private javax.swing.JButton selectFileForConversionButton;
@@ -906,6 +954,23 @@ public class View extends javax.swing.JFrame {
     
     public void setArduinoDataFile (String textValue)  {
         arduinoDataFileField.setText(textValue);
+    }
+    
+    public void setColorMixColor ()  {
+           int redValue;
+           int greenValue;
+           int blueValue;
+           
+           redValue = RGBToLED.convertLEDToRGB(getRedLedString());
+           greenValue = RGBToLED.convertLEDToRGB(getGreenLedString());
+           blueValue = RGBToLED.convertLEDToRGB(getBlueLedString());
+           
+//           redValue = 51*Integer.parseInt(newGUI.getRedLedString());
+//           greenValue = 51*Integer.parseInt(newGUI.getGreenLedString());
+//           blueValue = 51*Integer.parseInt(newGUI.getBlueLedString());
+           
+           
+           colorMix.setBackground( new Color(redValue, greenValue, blueValue) );
     }
     
     //getters
