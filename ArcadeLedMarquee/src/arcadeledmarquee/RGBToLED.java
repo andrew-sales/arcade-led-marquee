@@ -20,8 +20,6 @@ public int LEDRGB;
 
 public RGBToLED (){
     
-    //RGB = startRGB;
-    
 }
 
 public int convertRGBToLED (int RGBValue) {
@@ -51,8 +49,6 @@ RGB = RGBValue;
  
 }
     
-    
-
     return LEDRGB;
     
 }
@@ -102,65 +98,23 @@ else {
 }
 
 
-public byte [] createByteArray (int [] inputArray) 
-        
-    {
-        int[] data = inputArray;
-
-        ByteBuffer byteBuffer = ByteBuffer.allocate(data.length * 4);        
-        IntBuffer intBuffer = byteBuffer.asIntBuffer();
-        intBuffer.put(data);
-
-        byte[] array = byteBuffer.array();
-
-        for (int i=0; i < array.length; i++)
-        {
-            System.out.println(i + ": " + array[i]);
-        }
-        
-        return array;
-    }
-
-      
-//public static boolean mouseDown = false;
+//public byte [] createByteArray (int [] inputArray) 
+//        
+//    {
+//        int[] data = inputArray;
 //
-//public static Boolean getMouseDown () {
-//    
-//    return mouseDown;
-//}
+//        ByteBuffer byteBuffer = ByteBuffer.allocate(data.length * 4);        
+//        IntBuffer intBuffer = byteBuffer.asIntBuffer();
+//        intBuffer.put(data);
 //
+//        byte[] array = byteBuffer.array();
 //
-//public void mousePressed(MouseEvent e) {
-//    if (e.getButton() == MouseEvent.BUTTON1) {
-//        mouseDown = true;
-//        initThread();
+//        for (int i=0; i < array.length; i++)
+//        {
+//            System.out.println(i + ": " + array[i]);
+//        }
+//        
+//        return array;
 //    }
-//}
-//
-//public void mouseReleased(MouseEvent e) {
-//    if (e.getButton() == MouseEvent.BUTTON1) {
-//        mouseDown = false;
-//    }
-//}
-//
-//volatile private boolean isRunning = false;
-//private synchronized boolean checkAndMark() {
-//    if (isRunning) return false;
-//    isRunning = true;
-//    return true;
-//}
-//private void initThread() {
-//    if (checkAndMark()) {
-//        new Thread() {
-//            public void run() {
-//                do {
-//                    //do something
-//                } while (mouseDown);
-//                isRunning = false;
-//            }
-//        }.start();
-////    }
-////}
-
 
 }
